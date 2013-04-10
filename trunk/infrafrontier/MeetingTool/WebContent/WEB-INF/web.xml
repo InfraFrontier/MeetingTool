@@ -6,6 +6,16 @@
 		<session-timeout>120</session-timeout>
 	</session-config>
 		
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/app-config.xml</param-value>
+	</context-param>
+	
+		<!-- you need a unique webroot key -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>webapp.MeetingTool</param-value>
+	</context-param>
 	
 	<context-param>
 		<param-name>javax.faces.CONFIG_FILES</param-name>
@@ -17,47 +27,28 @@
 		<param-value>/WEB-INF/classes/log4j.xml</param-value>
 	</context-param>
 
+	<!-- Just here so the JSF implementation can initialize, *not* used at runtime -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<!-- Just here so the JSF implementation can initialize -->
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.faces</url-pattern>
+		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
-
-	<!-- Spring has a web application listener that reads the contextConfigLocation files and creates the WebApplicationContext for the web application, which you install as follows: -->
-	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	</listener>
-
-	<!-- Log4j -->
-	<listener>
-		<listener-class>
-			org.springframework.web.util.Log4jConfigListener
-		</listener-class>
-	</listener>
-
-
-
-	<!-- Macht dem Context Loader die zwei wichtige XML Config Dateien fÃ¼r Spring und acegi bekannr  -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:app-config*.xml</param-value>
-	</context-param>
-
-	<!-- you need a unique webroot key -->
-	<context-param>
-		<param-name>webAppRootKey</param-name>
-		<param-value>webapp.MeetingTool</param-value>
-	</context-param>
-	
-	
-
+	 <context-param>
+    	<param-name>javax.faces.PROJECT_STAGE</param-name>
+    	<param-value>Development</param-value>
+  	</context-param>
+  
+	 <context-param>
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+        <param-value>.xhtml</param-value>
+    </context-param>
+    
 	<filter>
 		<filter-name>serializeRequestsFilter</filter-name>
 		<filter-class>
@@ -80,6 +71,34 @@
 		<filter-name>springFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+	<!-- Loads /WEB-INF/applicationContext.xml and puts reference to it in servlet context. 
+	Can be accessed with WebApplicationContextUtils.getRequiredWebApplicationContext  -->
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+<!-- Lets you give request or session scopes to beans in applicationContext.xml. 
+If you don’t use these scopes, this listener is not required. But you should probably have this entry commented
+out in web.xml just in case you want those scopes later -->	
+  <listener>
+    <listener-class>
+      org.springframework.web.context.request.RequestContextListener
+    </listener-class>
+  </listener>
+  	
+	<listener>
+		<listener-class>uk.ac.ebi.phenotype.util.ContextFinalizer</listener-class>
+	</listener>
+
+	<!-- Log4j -->
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	
 
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>

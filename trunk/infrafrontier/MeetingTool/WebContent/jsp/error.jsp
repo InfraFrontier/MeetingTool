@@ -24,6 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h1>Sorry, the database is not available at the moment!<br> Please try again later or contact :<br>   
-    steinkamp@helmholtz-muenchen.de or lengger@helmholtz-muenchen.de</h1>
+    mouse-informatics@ebi.ac.uk</h1>
   </body>
 </html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+     
+<ui:param name="path" value="#{request.contextPath}" />
+<ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
+      
+    <h:head>
+    	<title><ui:insert name="title">Infrafrontier Meeting Tool</ui:insert></title>
+    	<h:outputStylesheet library="css" name="default.css"  />
+    </h:head>
+    <h:body>
+ 	<div class="logo"> <img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></div>
+		
+		<f:view>
+			<h:form id="eventForm">
+				<h:panelGrid columns="1" cellpadding="2" >
+					<f:facet name="header">
+					<h:outputText value="Infrafrontier Events" style="font-size: 24px"></h:outputText>
+					</f:facet>
+					<h:panelGroup></h:panelGroup>
+
+					<h:outputText
+						value="Please choose the event you want to subscribe to"
+						style="font-size: 20px"></h:outputText>
+ 
+ 					<h:dataTable var="event" value="#{eventBean.events}" binding="#{eventBean.eventTable}" border="1"
+						 headerClass="tableheader">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Event"></h:outputText>
+							</f:facet>
+							<h:commandLink action="#{eventBean.showBookingForm}"
+								value="#{event.name}">
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Start"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{event.start}">
+								<f:convertDateTime timeZone="CET" pattern="dd.MM.yyyy" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="End"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{event.end}">
+								<f:convertDateTime timeZone="CET" pattern="dd.MM.yyyy" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Place"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{event.place}"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Comment"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{event.comment}"></h:outputText>
+						</h:column>
+					</h:dataTable>
+ 				</h:panelGrid>
+			</h:form>
+		</f:view>		
+    </h:body>
+</html>
