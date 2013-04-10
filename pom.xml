@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>eu.infrafrontier.meeting</groupId>
+  <groupId>de.ieg.infra.meeting</groupId>
   <artifactId>InfrafrontierMeetingTool</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -13,8 +13,11 @@
 		<slf4j.version>1.5.10</slf4j.version>
 		<java.version>1.6</java.version>
 		<junit.version>4.8.2</junit.version>
-		<servlet.api.version>2.5</servlet.api.version>
-		<baseUrl>/InfrafrontierMeetingTool</baseUrl>
+		<servlet.api.version>3.0.1</servlet.api.version>
+		<jstl.version>1.2</jstl.version>
+		<el.api.version>2.2.1</el.api.version>
+		<jsf.api.version>2.1.20</jsf.api.version>
+		<jsf.impl.version>2.1.20</jsf.impl.version>		
 	</properties>
 
 	<dependencies>
@@ -32,7 +35,7 @@
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
+			<artifactId>javax.servlet-api</artifactId>
 			<version>${servlet.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -115,6 +118,11 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-faces</artifactId>
+			<version>2.3.2.RELEASE</version>
+		</dependency>
 
 		<!-- DB Dependencies -->
 
@@ -174,8 +182,6 @@
 			</exclusions>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
@@ -201,7 +207,6 @@
 			</exclusions>
 		</dependency>
 
-
 		<!-- View Dependencies -->
 		<dependency>
 			<groupId>taglibs</groupId>
@@ -226,18 +231,21 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -262,15 +270,51 @@
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>javax.faces</groupId>
+			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.1</version>
+			<version>${jsf.api.version}</version>
 		</dependency>
 		
+		<!--  dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.1.10</version>
+		</dependency-->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.impl.version}</version>
+		</dependency>
+
+		<!--  dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.1</version>
+		</dependency-->
+		<!-- EL -->
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${el.api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>2.2</version>
+		</dependency>
+ 
+		<!-- Tomcat 6 need this -->
+		<dependency>
+			<groupId>com.sun.el</groupId>
+			<artifactId>el-ri</artifactId>
+			<version>1.0</version>
+		</dependency>
+				
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -282,7 +326,6 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.7.2</version>
 		</dependency>
-
 
 	</dependencies>
 
@@ -373,28 +416,9 @@
 									</action>
 								</pluginExecution>
 
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>com.google.code.maven-replacer-plugin</groupId>
-										<artifactId>replacer</artifactId>
-										<versionRange>[1.5.2,)</versionRange>
-										<goals>
-											<goal>replace</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>com.samaxes.maven</groupId>
-					<artifactId>minify-maven-plugin</artifactId>
-					<version>1.7</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -437,14 +461,12 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<path>/phenotype-archive</path>
+					<path>/MeetingTool</path>
 					<server>tomcat7</server>
-					<url>http://localhost:8080/manager/html</url>
+					<url>http://localhost:8080/manager/text</url>
 					<update>true</update>
 				</configuration>
 			</plugin>
-
-
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -466,6 +488,12 @@
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<!-- excluded because these resources are minified -->
 					<!-- <webXml>web/WEB-INF/web.xml</webXml> -->
+					<webResources>
+						<resource>
+							<directory>${basedir}/WebContent/resources</directory>
+							<targetPath></targetPath>
+						</resource>
+					</webResources>
 					<attachClasses>true</attachClasses>
 					<classesClassifier>classes</classesClassifier>
 					<archive>
@@ -475,7 +503,7 @@
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 						</manifest>
 					</archive>
-					<archiveClasses>true</archiveClasses>
+					<archiveClasses>false</archiveClasses>
 				</configuration>
 			</plugin>
 
@@ -496,30 +524,7 @@
 				</configuration>
 			</plugin>
 
-
-
 		</plugins>
 	</build>
-
-	<profiles>
-
-		<profile>
-			<id>test</id>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>2.4.2</version>
-						<configuration>
-							<skipTests>false</skipTests>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		
-	</profiles>
 
 </project>

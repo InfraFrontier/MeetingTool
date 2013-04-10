@@ -1,1 +1,3 @@
-<jsp:forward page="/jsp/infraFrontierEvents.faces" />
+<% response.sendRedirect("xhtml/infraFrontierEvents.jsf"); %>
+
+<!-- >jsp:forward page="/jsp/infraFrontierEvents.jsf" /-->

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	">
+
+	<!-- The PropertyPlaceholderConfigurer reads the jdbc.propertes file from the
+		class path. It contains the properties values for the DataSource bean 	-->
+	<!-- >bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean-->
+
+	<!-- activates AOP-Annotations -->
+	<aop:aspectj-autoproxy />
+
+	<!-- enable the configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<!--  *********************Transaction Manager bean ******************************** -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+
+	<!-- ************************** Initialization of log4j *************************** -->
+	<bean id="log4jInitialization"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass"
+			value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+			<list>
+				<value>classpath:log4j.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- ************************** mail sender *************************** -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.ebi.ac.uk" />
+	</bean>
+
+	<!-- ******************************** DAOs ****************************  -->
+
+	<bean id="eventDao" class="de.ieg.infra.daoimpl.EventDaoImpl" scope="session">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="bookingDao" class="de.ieg.infra.daoimpl.BookingDaoImpl" scope="session">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- ******************************** services ****************************  -->
+	<bean id="mailService" class="de.ieg.infra.serviceimpl.MailServiceImpl">
+		<property name="mailSender" ref="mailSender"></property>
+		<property name="from" value="koscieln@ebi.ac.uk"></property>
+		<property name="subject" value="Infrafrontier: details of new subscription to "></property>
+		<property name="subjectUpdatedBookingList" value="Infrafrontier: updated booking list for "></property>
+	</bean>
+
+
+	<!-- ******************************** controller ****************************  -->
+
+	<!--  context:component-scan base-package="de.ieg.infra.controller" /-->
+	
+	<bean id="eventBean" class="de.ieg.infra.controller.EventBean" init-method="init" scope="session">
+		<property name="eventDao" ref="eventDao"></property>
+	</bean>
+
+	<bean id="i3KickOffBookingBean" class="de.ieg.infra.controller.InfrafrontierI3KickOffMeetingBookingBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>
+
+	<!-- ******************************** select items ****************************  -->
+
+	<bean id="outTimeSelectItems" class="de.ieg.infra.selectitems.TimeSelectItems" scope="session"></bean>
+	<bean id="returnTimeSelectItems" class="de.ieg.infra.selectitems.TimeSelectItems" scope="session"></bean>
+
+</beans>
