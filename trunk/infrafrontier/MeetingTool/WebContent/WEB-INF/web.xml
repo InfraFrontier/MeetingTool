@@ -14,7 +14,7 @@
 		<!-- you need a unique webroot key -->
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>webapp.MeetingTool</param-value>
+		<param-value>webapp.infrafrontier.MeetingTool</param-value>
 	</context-param>
 	
 	<context-param>
