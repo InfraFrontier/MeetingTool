@@ -93,11 +93,11 @@ out in web.xml just in case you want those scopes later -->
 	</listener>
 
 	<!-- Log4j -->
-	<listener>
+	<!--  >listener>
 		<listener-class>
 			org.springframework.web.util.Log4jConfigListener
 		</listener-class>
-	</listener>
+	</listener-->
 	
 
 	<welcome-file-list>
