@@ -29,7 +29,7 @@
 
     <navigation-rule>
 		<navigation-case>
-            <from-outcome>infImpcIkmcRome1</from-outcome>
+            <from-outcome>romeMeeting</from-outcome>
 			<to-view-id>/xhtml/romeMeeting.xhtml</to-view-id>
             <redirect />
         </navigation-case>
@@ -37,7 +37,7 @@
         
     <navigation-rule>
 		<navigation-case>
-			<from-outcome>infImpcIkmcRome2</from-outcome>
+			<from-outcome>romeInfrafrontierWorkshop</from-outcome>
             <to-view-id>/xhtml/romeInfrafrontierWorkshop.xhtml</to-view-id>
             <redirect />
         </navigation-case>
