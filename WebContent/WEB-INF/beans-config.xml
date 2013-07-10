@@ -64,7 +64,7 @@
 	<!-- ******************************** services ****************************  -->
 	<bean id="mailService" class="de.ieg.infra.serviceimpl.MailServiceImpl">
 		<property name="mailSender" ref="mailSender"></property>
-		<property name="from" value="koscieln@ebi.ac.uk"></property>
+		<property name="from" value="mouse-informatics@ebi.ac.uk"></property>
 		<property name="subject" value="Infrafrontier: details of new subscription to "></property>
 		<property name="subjectUpdatedBookingList" value="Infrafrontier: updated booking list for "></property>
 	</bean>
