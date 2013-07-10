@@ -88,12 +88,12 @@
 		<property name="mailService" ref="mailService"></property>
 	</bean>	
 	
-	<bean id="romeMeetingBean" class="de.ieg.infra.controller.InfImpcIkmcRomeBookingBean" scope="session">
+	<bean id="infImpcIkmcRome1Bean" class="de.ieg.infra.controller.InfImpcIkmcRomeBookingBean" scope="session">
 		<property name="bookingDao" ref="bookingDao"></property>
 		<property name="mailService" ref="mailService"></property>
 	</bean>
 	
-	<bean id="romeInfrafrontierWorkshopBean" class="de.ieg.infra.controller.InfraImpcIkmcWorkshopBean" scope="session">
+	<bean id="infImpcIkmcRome2Bean" class="de.ieg.infra.controller.InfraImpcIkmcWorkshopBean" scope="session">
 		<property name="bookingDao" ref="bookingDao"></property>
 		<property name="mailService" ref="mailService"></property>
 	</bean>
