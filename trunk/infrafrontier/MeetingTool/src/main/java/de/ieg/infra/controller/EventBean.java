@@ -72,7 +72,7 @@ public class EventBean {
 	 * @return {@link List<Event>}
 	 */
 	public List<Event> getEvents() {
-		logger.debug("getEvents");
+		logger.debug("getEvents (" + events.size() + ")");
 		return events;
 	}
 
@@ -117,13 +117,14 @@ public class EventBean {
 		logger.debug("showBookingForm: " + beanName);
 		// BookingFormI3KickOffBean i3KickOffBookingBean
 		navigationOutcome=selectedEvent.getForm();
+		
 		BookingBean bookingBean=(BookingBean)Utils.getManagedBean(beanName);
 
 		bookingBean.setEvent(selectedEvent);
 		if(selectedEvent!=null) {
 			navigationOutcome= selectedEvent.getForm();
 		}
-		logger.debug("navigationOutcome: " + beanName);
+		logger.debug("navigationOutcome: " + navigationOutcome);
 		return navigationOutcome;
 	}
 
