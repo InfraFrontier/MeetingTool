@@ -123,6 +123,7 @@ public class EventBean {
 		if(selectedEvent!=null) {
 			navigationOutcome= selectedEvent.getForm();
 		}
+		logger.debug("navigationOutcome: " + beanName);
 		return navigationOutcome;
 	}
 

@@ -8,7 +8,6 @@ import javax.faces.event.ActionEvent;
 import org.apache.log4j.Logger;
 
 import de.ieg.infra.domain.Event;
-import de.ieg.infra.domain.InfImpcIkmcRome1Booking;
 import de.ieg.infra.domain.InfImpcIkmcRomeWorkshopBooking;
 import de.ieg.infra.utils.Utils;
 

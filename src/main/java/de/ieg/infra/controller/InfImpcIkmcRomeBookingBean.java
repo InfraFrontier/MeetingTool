@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 
 import de.ieg.infra.domain.Event;
 import de.ieg.infra.domain.InfImpcIkmcRome1Booking;
-import de.ieg.infra.domain.InfrafrontierI3KickOffMeetingBooking;
 import de.ieg.infra.utils.Utils;
 
 public class InfImpcIkmcRomeBookingBean extends BookingBean{
