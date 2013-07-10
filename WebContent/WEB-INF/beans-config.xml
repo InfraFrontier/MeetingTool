@@ -82,7 +82,22 @@
 		<property name="bookingDao" ref="bookingDao"></property>
 		<property name="mailService" ref="mailService"></property>
 	</bean>
-
+	
+	<bean id="romeEucommWorkshopBean" class="de.ieg.infra.controller.RomeEucommWorkshopBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>	
+	
+	<bean id="infImpcIkmcRomeBookingBean" class="de.ieg.infra.controller.InfImpcIkmcRomeBookingBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>
+	
+	<bean id="infraImpcIkmcWorkshopBean" class="de.ieg.infra.controller.InfraImpcIkmcWorkshopBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>
+		
 	<!-- ******************************** select items ****************************  -->
 
 	<bean id="outTimeSelectItems" class="de.ieg.infra.selectitems.TimeSelectItems" scope="session"></bean>
