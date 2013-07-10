@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+     
+<ui:param name="path" value="#{request.contextPath}" />
+<ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
+      
+    <h:head>
+    	<title><ui:insert name="title">Infrafrontier Meeting Tool</ui:insert></title>
+    	<h:outputStylesheet library="css" name="default.css"  />
+    </h:head>
+    <h:body>
+    
+ 	<div class="logo"> <img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></div>
+		
+		<f:view>
+			<h:form id="bookingForm" styleClass="dialog">
+				<h:panelGrid columns="1" id="bookGrid">
+
+					<h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
+						<f:facet name="header">
+							<h:outputText value="Event"></h:outputText>
+						</f:facet>
+						<h:outputLabel value="Event:" for="eventName"></h:outputLabel>
+						<h:outputText id="eventName" value="#{i3KickOffBookingBean.event.name}"></h:outputText>
+						<h:outputLabel value="Place:" for="place"></h:outputLabel>
+						<h:outputText id="place" value="#{i3KickOffBookingBean.event.place}"></h:outputText>
+						<h:outputLabel value="From:" for="start"></h:outputLabel>
+						<h:outputText id="start" value="#{i3KickOffBookingBean.event.start}"></h:outputText>
+						<h:outputLabel value="To:" for="end"></h:outputLabel>
+						<h:outputText id="end" value="#{i3KickOffBookingBean.event.end}"></h:outputText>
+					</h:panelGrid>
+
+					<h:message for="bookingForm" styleClass="message"></h:message>
+					<h:message for="bookGrid" styleClass="errorsGlobal"></h:message>
+
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						<f:facet name="header">
+							<h:outputText value="Personal information:"></h:outputText>
+						</f:facet>
+
+						<h:outputLabel value="Last name:" for="lastName"></h:outputLabel>
+						<h:inputText id="lastName" value="#{i3KickOffBookingBean.booking.lastName}" size="40"
+							required="true"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="lastName" styleClass="errors"></h:message>
+
+						<h:outputLabel value="First name:" for="firstName"></h:outputLabel>
+						<h:inputText id="firstName" value="#{i3KickOffBookingBean.booking.firstName}"
+							required="true" size="40"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="firstName" styleClass="errors" />
+
+
+						<h:outputLabel value="Email:" for="email"></h:outputLabel>
+						<h:inputText id="email" value="#{i3KickOffBookingBean.booking.email}" required="true" size="30" validator="#{i3KickOffBookingBean.validateEmail}"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="email" styleClass="errors"></h:message>
+
+						<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
+						<h:inputText id="institution" value="#{i3KickOffBookingBean.booking.institution}" required="true" size="30"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="institution" styleClass="errors"></h:message>
+
+						<h:outputLabel value="Country:" for="country"></h:outputLabel>
+						<h:inputText id="country" value="#{i3KickOffBookingBean.booking.country}" required="true" size="30"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="country" styleClass="errors"></h:message>
+
+					</h:panelGrid>
+
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						<f:facet name="header">
+							<h:outputText value="Dinner 22 April 2013 at 20:00"></h:outputText>
+						</f:facet>
+						<h:outputLabel  for="vegetarian" escape="true">
+							Vegetarian food for dinner or other dietary requirements:
+						</h:outputLabel>
+						<h:inputTextarea id="vegetarian" value="#{i3KickOffBookingBean.booking.vegetarian}"></h:inputTextarea>
+						<h:message for="remarks" styleClass="errors"></h:message>
+					</h:panelGrid>
+					
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						
+						<h:outputLabel  value="Remarks:" for="remarks" escape="true">
+							
+						</h:outputLabel>
+						<h:inputTextarea id="remarks" value="#{i3KickOffBookingBean.booking.remarks}"></h:inputTextarea>
+						<h:message for="remarks" styleClass="errors"></h:message>
+					</h:panelGrid>
+					
+					<div class="buttons">
+						<span class="button"><h:commandButton id="saveBooking" styleClass="save" actionListener="#{i3KickOffBookingBean.bookEvent}"
+								value="book event">
+							</h:commandButton>
+						</span>
+					</div>
+					
+					<h:message for="saveBooking" styleClass="errors"></h:message>
+										
+				</h:panelGrid>
+			</h:form>
+		</f:view>		
+    </h:body>
+    </html>

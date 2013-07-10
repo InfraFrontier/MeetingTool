@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+      http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+   version="2.1">
+	
+	<application>
+		<variable-resolver>
+			org.springframework.web.jsf.DelegatingVariableResolver
+		</variable-resolver>
+	</application>
+	
+	<application>
+		<message-bundle>custom_messages</message-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
+	</application>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>i3KickOffBooking</from-outcome>
+			<to-view-id>/xhtml/bookingFormI3KickOff.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>	
+	
+	<!--  >navigation-rule>
+		<navigation-case>
+			<from-outcome>infraFrontierEvents</from-outcome>
+			<to-view-id>/xhtml/infraFrontierEvents.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule-->
+		
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>confirm</from-outcome>
+			<to-view-id>/xhtml/confirmation.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+</faces-config>
+

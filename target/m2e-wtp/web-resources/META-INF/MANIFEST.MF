@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Infrafrontier Meeting Tool
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: de.ieg.infra.meeting
+Build-Jdk: 1.7.0_21
+Built-By: koscieln
+Created-By: Maven Integration for Eclipse
+Specification-Title: Infrafrontier Meeting Tool
+Specification-Version: 0.0.1-SNAPSHOT
+

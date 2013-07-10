@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+     
+<ui:param name="path" value="#{request.contextPath}" />
+<ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
+      
+    <h:head>
+    	<title><ui:insert name="title">Confirmation</ui:insert></title>
+    	<h:outputStylesheet library="css" name="default.css"  />
+    </h:head>
+    <h:body>
+    
+ 	<div class="logo"> <img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></div>
+ 	
+<f:view>
+	
+			<h:form id="confirmation">
+				<h:panelGrid columns="1" border="2" cellpadding="3" cellspacing="3"
+					styleClass="center_navigation" headerClass="tableheader" style="width: 641px; height: 228px">
+					<f:facet name="header">
+						<h:outputText value="Confirmation"></h:outputText>
+					</f:facet>
+
+					<h:outputText id="confirmationMessage"
+						value="Your request was submitted successfully and will be processed as soon as possible."></h:outputText>
+    				<h:outputText value="A confirmation message can't be sent by email due to an error!" styleClass="errors"></h:outputText>
+   
+				</h:panelGrid>
+			</h:form>
+		</f:view>	
+	</h:body>
+</html>
