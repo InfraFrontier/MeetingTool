@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+     
+<ui:param name="path" value="#{request.contextPath}" />
+<ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
+      
+    <h:head>
+    	<title><ui:insert name="title">Rome Infrafrontier Workshop</ui:insert></title>
+    	<h:outputStylesheet library="css" name="default.css"  />
+    	<h:outputStylesheet library="css" name="calendar-win2k-1.css"  />
+    	<!-- import the calendar script -->
+		<script type="text/javascript" src="#{path}/js/calendar.js"></script>
+		<script type="text/javascript" src="#{path}/js/calendar-en.js"></script>
+		<script type="text/javascript" src="#{path}/js/calendarHelper.js"></script>
+		<meta name="http-equiv" value="Content-Type"
+				content="text/html; charset=ISO-8859-2" />
+    </h:head>
+
+    <h:body>
+    
+ 	<div class="logo"> <img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></div>
+
+	<f:view>
+			<h:form id="bookingForm" styleClass="dialog">
+				<h:panelGrid columns="1" id="bookGrid">
+
+					<h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
+						<f:facet name="header">
+							<h:outputText value="Event"></h:outputText>
+						</f:facet>
+						<h:outputLabel value="Event:" for="eventName"></h:outputLabel>
+						<h:outputText id="eventName" value="#{athenInfrafrontierMeetingBean.event.name}"></h:outputText>
+						<h:outputLabel value="Place:" for="place"></h:outputLabel>
+						<h:outputText id="place" value="#{athenInfrafrontierMeetingBean.event.place}"></h:outputText>
+						<h:outputLabel value="From:" for="start"></h:outputLabel>
+						<h:outputText id="start" value="#{athenInfrafrontierMeetingBean.event.start}"></h:outputText>
+						<h:outputLabel value="To:" for="end"></h:outputLabel>
+						<h:outputText id="end" value="#{athenInfrafrontierMeetingBean.event.end}"></h:outputText>
+					</h:panelGrid>
+
+
+					<h:message for="bookingForm" styleClass="message"></h:message>
+					<h:message for="bookGrid" styleClass="errorsGlobal"></h:message>
+
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						<f:facet name="header">
+							<h:outputText value="Personal information:"></h:outputText>
+						</f:facet>
+
+						<h:outputLabel value="Last name:" for="lastName"></h:outputLabel>
+						<h:inputText id="lastName" value="#{athenInfrafrontierMeetingBean.booking.lastName}" size="40"
+							required="true"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="lastName" styleClass="errors"></h:message>
+
+						<h:outputLabel value="First name:" for="firstName"></h:outputLabel>
+						<h:inputText id="firstName" value="#{athenInfrafrontierMeetingBean.booking.firstName}"
+							required="true" size="40"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="firstName" styleClass="errors" />
+
+
+						<h:outputLabel value="Email:" for="email"></h:outputLabel>
+						<h:inputText id="email" value="#{athenInfrafrontierMeetingBean.booking.email}" required="true" size="30" validator="#{athenInfrafrontierMeetingBean.validateEmail}"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="email" styleClass="errors"></h:message>
+
+						<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
+						<h:inputText id="institution" value="#{athenInfrafrontierMeetingBean.booking.institution}" required="true" size="30"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="institution" styleClass="errors"></h:message>
+
+						<h:outputLabel value="Country:" for="country"></h:outputLabel>
+						<h:inputText id="country" value="#{athenInfrafrontierMeetingBean.booking.country}" required="true" size="30"></h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="country" styleClass="errors"></h:message>
+
+					</h:panelGrid>
+					
+					
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						<f:facet name="header">
+							<h:outputText value="Hotel"></h:outputText>
+						</f:facet>
+						<h:outputLabel value="Hotel needed?" for="hotelNeeded"></h:outputLabel>
+						<h:selectOneRadio id="hotelNeeded"
+						value="#{athenInfrafrontierMeetingBean.booking.hotelYesNo}" required="true">
+						<f:selectItem itemLabel="no" itemValue="no" />
+						<f:selectItem itemLabel="yes" itemValue="yes" />
+						</h:selectOneRadio>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="hotelNeeded" styleClass="errors"></h:message>
+						
+						<h:outputLabel value="Number of nights:" for="nights"></h:outputLabel>
+						<h:inputText id="nights" value="#{athenInfrafrontierMeetingBean.booking.numberOfNights}"> </h:inputText>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="nights" styleClass="errors"></h:message>
+					</h:panelGrid>
+					<h:outputLabel value="Note: Please book accommodation directly with Divani Apollon.
+					A link and password to a booking form will be circulated via Email to registered participants.
+					Special rates are offered to meeting participants via this booking form." style="font-weight:bold;"></h:outputLabel>
+
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						<f:facet name="header">
+							<h:outputText value="Breakout sessions"></h:outputText>
+						</f:facet>
+						
+						<h:outputLabel value="Please select in which breakout </br> session you will participate:"for="breakoutSessions" escape="false"></h:outputLabel>
+						<h:selectOneMenu id="breakoutSessions" value="#{athenInfrafrontierMeetingBean.booking.breakoutSession}" required="true">
+							<f:selectItem itemLabel="no" itemValue="no"/>
+							<f:selectItem itemLabel="WP5 Technology development / Archiving / Martin Fray" itemValue="WP5 Technology development / Archiving / Martin Fray"/>
+							<f:selectItem itemLabel="WP5 Technology development / Phenotyping / Mohammed Selloum" itemValue="WP5 Technology development / Phenotyping / Mohammed Selloum"/>
+							<f:selectItem itemLabel="WP6 Informatics / Terry Meehan and Gautier Koscielny" itemValue="WP6 Informatics / Terry Meehan and Gautier Koscielny"/>
+						</h:selectOneMenu>
+						<h:panelGroup></h:panelGroup>
+						<h:message for="breakoutSessions" styleClass="errors"></h:message>
+						
+					</h:panelGrid>
+					
+					
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						
+						<h:outputLabel  value="Remarks:" for="remarks" escape="true">
+							
+						</h:outputLabel>
+						<h:inputTextarea id="remarks" value="#{athenInfrafrontierMeetingBean.booking.remarks}"></h:inputTextarea>
+						<h:message for="remarks" styleClass="errors"></h:message>
+					</h:panelGrid>
+
+
+					<div class="buttons">
+						<SPAN class="button"><h:commandButton id="saveBooking" styleClass="save" actionListener="#{athenInfrafrontierMeetingBean.bookEvent}"
+								value="book event">
+							</h:commandButton>
+						</SPAN>
+					</div>
+					<h:message for="saveBooking" styleClass="errors"></h:message>
+				</h:panelGrid>
+			</h:form>
+		</f:view>		
+    </h:body>
+</html>

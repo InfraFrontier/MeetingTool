@@ -6,6 +6,7 @@ import de.ieg.infra.domain.Booking;
 import de.ieg.infra.domain.InfImpcIkmcRome1Booking;
 import de.ieg.infra.domain.InfImpcIkmcRomeWorkshopBooking;
 import de.ieg.infra.domain.InfrafrontierI3KickOffMeetingBooking;
+import de.ieg.infra.domain.AthenInfrafrontierBooking;
 
 /**
  * @author steinkamp
@@ -26,4 +27,5 @@ public interface BookingDao {
 	
 	public void insertInfImpcIkmcRomeWorkshopBooking(Integer eventId,InfImpcIkmcRomeWorkshopBooking booking) throws DataAccessException;
 
+	public void insertInfrafrontierI3AthensMeetingBooking(Integer eventId,AthenInfrafrontierBooking booking) throws DataAccessException;
 }
