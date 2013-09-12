@@ -1,32 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"   
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
-     
-<ui:param name="path" value="#{request.contextPath}" />
-<ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
-      
-    <h:head>
-    	<title><ui:insert name="title">Rome Infrafrontier Workshop</ui:insert></title>
-    	<h:outputStylesheet library="css" name="default.css"  />
-    	<h:outputStylesheet library="css" name="calendar-win2k-1.css"  />
-    	<!-- import the calendar script -->
-		<script type="text/javascript" src="#{path}/js/calendar.js"></script>
-		<script type="text/javascript" src="#{path}/js/calendar-en.js"></script>
-		<script type="text/javascript" src="#{path}/js/calendarHelper.js"></script>
-		<meta name="http-equiv" value="Content-Type"
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<f:view>
+	<html>
+		<head>
+			<title>Infrafrontier Meeting Tool</title>
+			<meta http-equiv="pragma" content="no-cache">
+			<meta http-equiv="cache-control" content="no-cache">
+			<meta http-equiv="expires" content="0">
+			<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+			<meta http-equiv="description" content="This is my page">
+			<meta name="author" content="Ralph Steinkamp">
+	
+			<link rel="stylesheet" type="text/css" href="<%=path%>/css/main.css">
+			<link rel="stylesheet" type="text/css" media="all"
+				href="<%=path%>/css/calendar-win2k-1.css" title="win2k-1">
+			
+			
+			<!-- import the calendar script -->
+			<script type="text/javascript" src="<%=path%>/js/calendar.js"></script>
+			<script type="text/javascript" src="<%=path%>/js/calendar-en.js"></script>
+			<script type="text/javascript" src="<%=path%>/js/calendarHelper.js"></script>
+			<meta name="http-equiv" value="Content-Type"
 				content="text/html; charset=ISO-8859-2" />
-    </h:head>
+			
+		</head>
 
-    <h:body>
-    
- 	<div class="logo"> <img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></div>
-
-	<f:view>
+		<body >
+			<div class="logo"> <img src="<%=path%>/images/InfraLogo.gif"  alt="Infrafrontier"/></div>
 			<h:form id="bookingForm" styleClass="dialog">
 				<h:panelGrid columns="1" id="bookGrid">
 
@@ -40,7 +51,6 @@
 						<h:outputText id="start" value="#{romeEucommWorkshopBean.event.start}"></h:outputText>
 						<h:outputLabel value="To:" for="end" style="font-weight:bold;"></h:outputLabel>
 						<h:outputText id="end" value="#{romeEucommWorkshopBean.event.end}"></h:outputText>
-						
 						
 					</h:panelGrid>
 					<h:outputLabel value="Please note that attendance to these workshops is by invitation only" style="font-weight:bold;"></h:outputLabel>
@@ -107,7 +117,7 @@
 							<h:outputText value="Workshop"></h:outputText>
 						</f:facet>
 						
-						<h:outputLabel value="EUCOMMTools Workshop:" for="eucommWorkshop"></h:outputLabel>
+						<h:outputLabel value="EUCOMMTools Workshop:"for="eucommWorkshop"></h:outputLabel>
 						<h:selectOneRadio id="eucommWorkshop" value="#{romeEucommWorkshopBean.booking.eucommWorkshop}" required="true">
 							<f:selectItem itemLabel="yes" itemValue="yes (eucomm tools workshop)"/>
 							<f:selectItem itemLabel="no" itemValue="no (eucomm tools workshop)"/>
@@ -136,7 +146,7 @@
 					</div>
 					<h:message for="saveBooking" styleClass="errors"></h:message>
 				</h:panelGrid>
-			</h:form>	
-		</f:view>		
-    </h:body>
-  </html>
+</h:form>
+		</body>
+	</html>
+</f:view>

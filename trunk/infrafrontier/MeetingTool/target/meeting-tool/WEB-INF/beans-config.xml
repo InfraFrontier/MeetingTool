@@ -64,7 +64,7 @@
 	<!-- ******************************** services ****************************  -->
 	<bean id="mailService" class="de.ieg.infra.serviceimpl.MailServiceImpl">
 		<property name="mailSender" ref="mailSender"></property>
-		<property name="from" value="koscieln@ebi.ac.uk"></property>
+		<property name="from" value="mouse-informatics@ebi.ac.uk"></property>
 		<property name="subject" value="Infrafrontier: details of new subscription to "></property>
 		<property name="subjectUpdatedBookingList" value="Infrafrontier: updated booking list for "></property>
 	</bean>
@@ -82,7 +82,22 @@
 		<property name="bookingDao" ref="bookingDao"></property>
 		<property name="mailService" ref="mailService"></property>
 	</bean>
-
+	
+	<bean id="romeEucommWorkshopBean" class="de.ieg.infra.controller.RomeEucommWorkshopBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>	
+	
+	<bean id="infImpcIkmcRome1Bean" class="de.ieg.infra.controller.InfImpcIkmcRomeBookingBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>
+	
+	<bean id="infImpcIkmcRome2Bean" class="de.ieg.infra.controller.InfraImpcIkmcWorkshopBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>
+		
 	<!-- ******************************** select items ****************************  -->
 
 	<bean id="outTimeSelectItems" class="de.ieg.infra.selectitems.TimeSelectItems" scope="session"></bean>
