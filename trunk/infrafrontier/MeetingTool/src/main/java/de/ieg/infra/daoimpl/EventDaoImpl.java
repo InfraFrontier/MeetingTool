@@ -31,7 +31,7 @@ public class EventDaoImpl extends JdbcTemplate implements EventDao {
 		logger.info("findAllActiveEvents");
 		String sql= "SELECT event_id,event_name,event_start,event_end,event_place,"
 					+"event_contact,event_record_number,event_is_active,event_comment,event_form "
-					+"FROM events where event_is_active=? order by event_id DESC";
+					+"FROM events where event_is_active=? order by event_id ASC";
 		List<Event> events=query(sql,new Object [] {1},new EventRowMapper());
 		return events;
 	}
