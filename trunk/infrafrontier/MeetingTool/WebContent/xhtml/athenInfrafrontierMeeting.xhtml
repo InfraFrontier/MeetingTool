@@ -11,7 +11,7 @@
 <ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
       
     <h:head>
-    	<title><ui:insert name="title">Rome Infrafrontier Workshop</ui:insert></title>
+    	<title><ui:insert name="title">Athens Infrafrontier I3 Meeting</ui:insert></title>
     	<h:outputStylesheet library="css" name="default.css"  />
     	<h:outputStylesheet library="css" name="calendar-win2k-1.css"  />
     	<!-- import the calendar script -->
@@ -24,7 +24,7 @@
 
     <h:body>
     
- 	<div class="logo"> <img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></div>
+ 	<div class="logo"> <a href="//www.infrafrontier.eu"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
 
 	<f:view>
 			<h:form id="bookingForm" styleClass="dialog">
