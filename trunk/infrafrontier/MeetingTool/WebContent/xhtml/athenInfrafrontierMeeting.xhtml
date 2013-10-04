@@ -14,8 +14,21 @@
 <ui:param name="googleAnalyticsBaseUrl" value="#{initParam['googleAnalyticsBaseUrl']}" />
       
     <h:head>
-    	<title><ui:insert name="title">Athens Infrafrontier I3 Meeting</ui:insert></title>
+    	<title><ui:insert name="title">Athens INFRAFRONTIER I3 Meeting</ui:insert></title>
+    	<meta name="author" content="Infrafrontier" />
+		<meta name="description" content="The Biological and Medical Science projects (ESFRI BMS) on the ESFRI roadmap meet regularly to discuss common issues. The ESFRI BMS group is in close contact with the ESFRI Health and Food Strategic Working Group (SWG). The ESFRI BMS group has published several common position papers on policy issues and works together in the BioMedBridges and EMTRAIN projects." />
+		<meta name="copyright" content="Infrafrontier" />
+		<link rel="shortcut icon" href="#{baseUrl}/sites/infrafrontier.eu/themes/custom/infrafrontier/img/favicon.ico" type="image/vnd.microsoft.icon" />
     	<h:outputStylesheet library="css" name="default.css"  />
+    	<style type="text/css" media="all">@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/ldap/ldap_user/ldap_user.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/date/date_api/date.css?mspj5o");
+@import url("#{baseUrl}/modules/search/search.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/views/css/views.css?mspj5o");</style>
+<style type="text/css" media="all">@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/ctools/css/ctools.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/ldap/ldap_servers/ldap_servers.admin.css?mspj5o");</style>
+<style type="text/css" media="all">@import url("#{baseUrl}/sites/infrafrontier.eu/themes/custom/infrafrontier/css/default.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/themes/custom/infrafrontier/css/ebi.css?mspj5o");
+</style>
     	<h:outputStylesheet library="css" name="calendar-win2k-1.css"  />
     	<!-- import the calendar script -->
 		<script type="text/javascript" src="#{path}/js/calendar.js"></script>
