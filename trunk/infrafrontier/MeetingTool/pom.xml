@@ -17,7 +17,9 @@
 		<jstl.version>1.2</jstl.version>
 		<el.api.version>2.2.1</el.api.version>
 		<jsf.api.version>2.1.20</jsf.api.version>
-		<jsf.impl.version>2.1.20</jsf.impl.version>		
+		<jsf.impl.version>2.1.20</jsf.impl.version>	
+		<baseUrl></baseUrl>
+		<googleAnalytics></googleAnalytics>
 	</properties>
 
 	<dependencies>
@@ -527,4 +529,51 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>external-dev</id>
+
+			<properties>
+				<baseUrl>//dev.infrafrontier.eu</baseUrl>
+				<googleAnalytics>UA-40422777-1</googleAnalytics>
+				<googleAnalyticsBaseUrl>//dev.infrafrontier.eu/sites/infrafrontier.eu/modules/contrib/google_analytics/googleanalytics.js?mspj5o</googleAnalyticsBaseUrl>
+			</properties>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.4.2</version>
+						<configuration>
+							<skipTests>true</skipTests>
+							<excludes>
+								<exclude>**/integration/**</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+<!-- allows you to select derived on the target directory in eclipse so we dont have it polluting search etc and then this stops the target being overwritten and thus the setting reset all the time -->
+				<!--  http://stackoverflow.com/questions/283489/is-there-a-way-to-hide-maven-2-target-folder-in-eclipse-3 -->
+					<plugin>
+						<artifactId>maven-clean-plugin</artifactId>
+						<configuration>
+							<excludeDefaultDirectories>true</excludeDefaultDirectories>
+							<filesets>
+								<!-- delete directories that will be generated when you start the 
+									develpment server/client in eclipse -->
+								<fileset>
+									<directory>target</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+							</filesets>
+						</configuration>
+					</plugin>
+
+				</plugins>
+			</build>
+
+		</profile>	
+	</profiles>
 </project>

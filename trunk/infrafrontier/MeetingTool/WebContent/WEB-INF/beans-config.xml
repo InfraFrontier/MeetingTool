@@ -108,4 +108,16 @@
 	<bean id="outTimeSelectItems" class="de.ieg.infra.selectitems.TimeSelectItems" scope="session"></bean>
 	<bean id="returnTimeSelectItems" class="de.ieg.infra.selectitems.TimeSelectItems" scope="session"></bean>
 
+	<bean id="globalConfiguration" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="targetMapClass">
+			<value>java.util.HashMap</value>
+		</property>
+		<property name="sourceMap">
+			<map key-type="java.lang.String" value-type="java.lang.String">
+				<entry key="baseUrl" value="${baseUrl}" />
+				<entry key="googleAnalytics" value="${googleAnalytics}" />
+				<entry key="googleAnalyticsBaseUrl" value="${googleAnalyticsBaseUrl}" />
+			</map>
+		</property>
+	</bean>
 </beans>
