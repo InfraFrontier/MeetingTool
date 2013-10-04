@@ -1,0 +1,43 @@
+CREATE TABLE `events` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_name` text NOT NULL,
+  `event_start` varchar(255) DEFAULT NULL,
+  `event_end` varchar(255) DEFAULT NULL,
+  `event_place` text,
+  `event_contact` text,
+  `event_record_number` text,
+  `event_is_active` tinyint(1) DEFAULT NULL,
+  `event_comment` text,
+  `event_form` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`event_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `bookings` (
+  `booking_id` int(11) NOT NULL AUTO_INCREMENT,
+  `booking_event` int(11) NOT NULL,
+  `booking_first_name` varchar(255) DEFAULT NULL,
+  `booking_second_name` varchar(255) DEFAULT NULL,
+  `booking_sex` varchar(10) DEFAULT NULL,
+  `booking_email` varchar(255) DEFAULT NULL,
+  `booking_flight_needed` varchar(10) DEFAULT NULL,
+  `booking_hotel_needed` varchar(10) DEFAULT NULL,
+  `booking_hotel_details` varchar(255) DEFAULT NULL,
+  `booking_outbound_flight_from` varchar(255) DEFAULT NULL,
+  `booking_outbound_flight_to` varchar(255) DEFAULT NULL,
+  `booking_outbound_flight_date` datetime DEFAULT NULL,
+  `booking_outbound_flight_time` varchar(255) DEFAULT NULL,
+  `booking_outbound_flight_time_type` varchar(255) DEFAULT NULL,
+  `booking_return_flight_from` varchar(255) DEFAULT NULL,
+  `booking_return_flight_to` varchar(255) DEFAULT NULL,
+  `booking_return_flight_date` datetime DEFAULT NULL,
+  `booking_return_flight_time` varchar(255) DEFAULT NULL,
+  `booking_return_flight_time_type` varchar(255) DEFAULT NULL,
+  `booking_remarks` text,
+  `booking_institution` varchar(255) DEFAULT NULL,
+  `booking_country` varchar(255) DEFAULT NULL,
+  `booking_attend_dinner` varchar(11) DEFAULT NULL,
+  `booking_flight_number_outbound` varchar(50) DEFAULT NULL,
+  `booking_flight_number_return` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`booking_id`),
+  KEY `fk1` (`booking_event`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;

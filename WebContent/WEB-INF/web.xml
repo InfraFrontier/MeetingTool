@@ -27,6 +27,21 @@
 		<param-value>/WEB-INF/classes/log4j.xml</param-value>
 	</context-param>
 
+	<context-param>
+      <param-name>baseUrl</param-name>
+      <param-value>${baseUrl}</param-value>
+   </context-param>
+   
+   <context-param>
+      <param-name>googleAnalytics</param-name>
+      <param-value>${googleAnalytics}</param-value>
+   </context-param>
+   
+   <context-param>
+      <param-name>googleAnalyticsBaseUrl</param-name>
+      <param-value>${googleAnalyticsBaseUrl}</param-value>
+   </context-param>
+
 	<!-- Just here so the JSF implementation can initialize, *not* used at runtime -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>

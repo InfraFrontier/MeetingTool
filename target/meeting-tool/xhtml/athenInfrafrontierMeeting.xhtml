@@ -8,10 +8,7 @@
       >
      
 <ui:param name="path" value="#{request.contextPath}" />
-<ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" />
-<ui:param name="baseUrl" value="#{initParam['baseUrl']" />
-<ui:param name="googleAnalytics" value="#{initParam['googleAnalytics']" />
-<ui:param name="googleAnalyticsBaseUrl" value="#{initParam['googleAnalyticsBaseUrl']" />
+<ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
       
     <h:head>
     	<title><ui:insert name="title">Athens Infrafrontier I3 Meeting</ui:insert></title>
@@ -21,16 +18,13 @@
 		<script type="text/javascript" src="#{path}/js/calendar.js"></script>
 		<script type="text/javascript" src="#{path}/js/calendar-en.js"></script>
 		<script type="text/javascript" src="#{path}/js/calendarHelper.js"></script>
-		<script type="text/javascript">
-			var _gaq = _gaq || [];_gaq.push(["_setAccount", "#{googleAnalytics}"]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = "#{googleAnalyticsBaseUrl}";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
-		</script>
 		<meta name="http-equiv" value="Content-Type"
 				content="text/html; charset=ISO-8859-2" />
     </h:head>
 
     <h:body>
     
- 	<div class="logo"> <a href="#{baseUrl}"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
+ 	<div class="logo"> <a href="//www.infrafrontier.eu"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
 
 	<f:view>
 			<h:form id="bookingForm" styleClass="dialog">
