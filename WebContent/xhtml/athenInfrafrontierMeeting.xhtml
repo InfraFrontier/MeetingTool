@@ -44,7 +44,7 @@
 				<h:panelGrid columns="1" id="bookGrid">
 
 					<h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
-						<f:facet name="header">
+						<f:facet name="header" styleClass="head">
 							<h:outputText value="Event"></h:outputText>
 						</f:facet>
 						<h:outputLabel value="Event:" for="eventName"></h:outputLabel>
@@ -63,8 +63,8 @@
 
 					<h:panelGrid columns="4" rowClasses="prop"
 						columnClasses="name,value,comment">
-						<f:facet name="header">
-							<h:outputText value="Personal information:"></h:outputText>
+						<f:facet name="header" styleClass="head">
+							<h:outputText value="Personal information"></h:outputText>
 						</f:facet>
 
 						<h:outputLabel value="Last name:" for="lastName"></h:outputLabel>
@@ -117,10 +117,13 @@
 						<h:panelGroup></h:panelGroup>
 						<h:message for="nights" styleClass="errors"></h:message>
 					</h:panelGrid>
+					
+					<div class="view-content">
 					<h:outputLabel value="Note: Please book accommodation directly with Divani Apollon.
 					A link and password to a booking form will be circulated via Email to registered participants.
 					Special rates are offered to meeting participants via this booking form." style="font-weight:bold;"></h:outputLabel>
-
+					</div>
+					
 					<h:panelGrid columns="4" rowClasses="prop"
 						columnClasses="name,value,comment">
 						<f:facet name="header">
