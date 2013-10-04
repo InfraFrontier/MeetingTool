@@ -509,6 +509,10 @@
 							<directory>${basedir}/WebContent/resources</directory>
 							<filtering>true</filtering>
 							<targetPath></targetPath>
+							<includes>
+								<include>**/web.xml</include>
+								<include>**/beans-config.xml</include>
+							</includes>
 						</resource>
 					</webResources>
 					<attachClasses>true</attachClasses>
