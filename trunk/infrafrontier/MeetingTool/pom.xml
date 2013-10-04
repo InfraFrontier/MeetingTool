@@ -507,6 +507,7 @@
 					<webResources>
 						<resource>
 							<directory>${basedir}/WebContent/resources</directory>
+							<filtering>true</filtering>
 							<targetPath></targetPath>
 						</resource>
 					</webResources>
