@@ -507,13 +507,17 @@
 					<webResources>
 						<resource>
 							<directory>${basedir}/WebContent/resources</directory>
-							<filtering>true</filtering>
 							<targetPath></targetPath>
+						</resource>
+						<resource>
+							<directory>${basedir}/WebContent/WEB-INF</directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF</targetPath>
 							<includes>
 								<include>**/web.xml</include>
 								<include>**/beans-config.xml</include>
 							</includes>
-						</resource>
+						</resource>						
 					</webResources>
 					<attachClasses>true</attachClasses>
 					<classesClassifier>classes</classesClassifier>
