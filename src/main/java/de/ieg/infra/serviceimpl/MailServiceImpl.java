@@ -27,6 +27,7 @@ import de.ieg.infra.utils.Utils;
 public class MailServiceImpl implements MailService {
 	private JavaMailSender mailSender;
 	private String from;
+	private String disaster;
 	private String subject;
 	private String subjectUpdatedBookingList;
 
@@ -44,6 +45,20 @@ public class MailServiceImpl implements MailService {
 
 	public void setFrom(String from) {
 		this.from = from;
+	}
+	
+	/**
+	 * @return the disaster
+	 */
+	public String getDisaster() {
+		return disaster;
+	}
+
+	/**
+	 * @param disaster the disaster to set
+	 */
+	public void setDisaster(String disaster) {
+		this.disaster = disaster;
 	}
 
 	public String getSubject() {
