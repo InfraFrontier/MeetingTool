@@ -21,6 +21,9 @@
 		<baseUrl></baseUrl>
 		<googleAnalytics></googleAnalytics>
 		<googleAnalyticsBaseUrl></googleAnalyticsBaseUrl>
+		<fromContact>info@infrafrontier.eu</fromContact>
+		<disasterContact>info@infrafrontier.eu</disasterContact>
+		<smtpServer>smtp.ebi.ac.uk</smtpServer>
 	</properties>
 
 	<dependencies>
