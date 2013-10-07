@@ -48,7 +48,7 @@
 	<!-- ************************** mail sender *************************** -->
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.ebi.ac.uk" />
+		<property name="host" value="${smtpServer}" />
 	</bean>
 
 	<!-- ******************************** DAOs ****************************  -->
@@ -64,7 +64,8 @@
 	<!-- ******************************** services ****************************  -->
 	<bean id="mailService" class="de.ieg.infra.serviceimpl.MailServiceImpl">
 		<property name="mailSender" ref="mailSender"></property>
-		<property name="from" value="mouse-informatics@ebi.ac.uk"></property>
+		<property name="from" value="${fromContact}"></property>
+		<property name="disaster" value="${disasterContact}"></property>
 		<property name="subject" value="Infrafrontier: details of new subscription to "></property>
 		<property name="subjectUpdatedBookingList" value="Infrafrontier: updated booking list for "></property>
 	</bean>
