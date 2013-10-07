@@ -2,21 +2,13 @@ package de.ieg.infra.controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlPanelGrid;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.faces.validator.ValidatorException;
-import javax.mail.MessagingException;
 
-import org.apache.log4j.Logger;
-import org.springframework.dao.DataAccessException;
-import org.springframework.mail.MailException;
-import org.springframework.mail.MailSendException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.ieg.infra.dao.BookingDao;
-import de.ieg.infra.dao.EventDao;
-
-import de.ieg.infra.domain.Booking;
 import de.ieg.infra.domain.Event;
 import de.ieg.infra.service.MailService;
 import de.ieg.infra.utils.Utils;
@@ -31,6 +23,7 @@ public abstract class BookingBean {
 	protected BookingDao bookingDao;
 	private MailService mailService;
 
+	public static final Logger logger = LoggerFactory.getLogger(BookingBean.class);
 
 	/**
 	 * Returns an event
