@@ -46,13 +46,13 @@
 				<h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
 						
 						<h:outputLabel value="Event:" for="eventName" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="eventName" value="#{infImpcIkmcRome1Bean.event.name}"></h:outputText>
+						<h:outputText id="eventName" value="#{romeMeetingBean.event.name}"></h:outputText>
 						<h:outputLabel value="Place:" for="place" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="place" value="#{infImpcIkmcRome1Bean.event.place}"></h:outputText>
+						<h:outputText id="place" value="#{romeMeetingBean.event.place}"></h:outputText>
 						<h:outputLabel value="From:" for="start" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="start" value="#{infImpcIkmcRome1Bean.event.start}"></h:outputText>
+						<h:outputText id="start" value="#{romeMeetingBean.event.start}"></h:outputText>
 						<h:outputLabel value="To:" for="end" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="end" value="#{infImpcIkmcRome1Bean.event.end}"></h:outputText>
+						<h:outputText id="end" value="#{romeMeetingBean.event.end}"></h:outputText>
 						
 					</h:panelGrid>
 
@@ -69,25 +69,25 @@
 						</f:facet>
 
 						<h:outputLabel value="Last name:" for="lastName"></h:outputLabel>
-						<h:inputText id="lastName" value="#{infImpcIkmcRome1Bean.booking.lastName}" size="40"
+						<h:inputText id="lastName" value="#{romeMeetingBean.booking.lastName}" size="40"
 							required="true"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="lastName" styleClass="errors"></h:message>
 
 						<h:outputLabel value="First name:" for="firstName"></h:outputLabel>
-						<h:inputText id="firstName" value="#{infImpcIkmcRome1Bean.booking.firstName}"
+						<h:inputText id="firstName" value="#{romeMeetingBean.booking.firstName}"
 							required="true" size="40"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="firstName" styleClass="errors" />
 
 
 						<h:outputLabel value="Email:" for="email"></h:outputLabel>
-						<h:inputText id="email" value="#{infImpcIkmcRome1Bean.booking.email}" required="true" size="30" validator="#{infImpcIkmcRome1Bean.validateEmail}"></h:inputText>
+						<h:inputText id="email" value="#{romeMeetingBean.booking.email}" required="true" size="30" validator="#{romeMeetingBean.validateEmail}"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="email" styleClass="errors"></h:message>
 						
 						<h:outputLabel value="Sex:" for="sex"></h:outputLabel>
-						<h:selectOneRadio id="sex" value="#{infImpcIkmcRome1Bean.booking.sex}" required="true">
+						<h:selectOneRadio id="sex" value="#{romeMeetingBean.booking.sex}" required="true">
 							<f:selectItem itemLabel="f" itemValue="f"/>
 							<f:selectItem itemLabel="m" itemValue="m"/>
 						</h:selectOneRadio>
@@ -95,12 +95,12 @@
 						<h:message for="sex" styleClass="errors"></h:message>
 
 						<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
-						<h:inputText id="institution" value="#{infImpcIkmcRome1Bean.booking.institution}" required="true" size="30"></h:inputText>
+						<h:inputText id="institution" value="#{romeMeetingBean.booking.institution}" required="true" size="30"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="institution" styleClass="errors"></h:message>
 
 						<h:outputLabel value="Country:" for="country"></h:outputLabel>
-						<h:inputText id="country" value="#{infImpcIkmcRome1Bean.booking.country}" required="true" size="30"></h:inputText>
+						<h:inputText id="country" value="#{romeMeetingBean.booking.country}" required="true" size="30"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="country" styleClass="errors"></h:message>
 
@@ -114,7 +114,7 @@
 						</f:facet>
 						<h:outputLabel value="Hotel needed?" for="hotelNeeded"></h:outputLabel>
 						<h:selectOneRadio id="hotelNeeded"
-						value="#{infImpcIkmcRome1Bean.booking.hotelYesNo}" required="true">
+						value="#{romeMeetingBean.booking.hotelYesNo}" required="true">
 						<f:selectItem itemLabel="no" itemValue="no" />
 						<f:selectItem itemLabel="yes" itemValue="yes" />
 						</h:selectOneRadio>
@@ -122,7 +122,7 @@
 						<h:message for="hotelNeeded" styleClass="errors"></h:message>
 						
 						<h:outputLabel value="Number of nights:" for="nights"></h:outputLabel>
-						<h:selectManyCheckbox id="nights" value="#{infImpcIkmcRome1Bean.booking.numberOfNights}">
+						<h:selectManyCheckbox id="nights" value="#{romeMeetingBean.booking.numberOfNights}">
 							<f:selectItem itemLabel="2013-12-01" itemValue="2013-12-01"/>
 							<f:selectItem itemLabel="2013-12-02" itemValue="2013-12-02"/>
 							<f:selectItem itemLabel="2013-12-03" itemValue="2013-12-03"/>
@@ -131,7 +131,7 @@
 						<h:message for="nights" styleClass="errors"></h:message>
 						
 						<h:outputLabel value="Other remarks:" for="hotelRemarks"></h:outputLabel>
-						<h:inputText id="hotelRemarks" value="#{infImpcIkmcRome1Bean.booking.hotelRemarks}"> </h:inputText>
+						<h:inputText id="hotelRemarks" value="#{romeMeetingBean.booking.hotelRemarks}"> </h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="hotelRemarks" styleClass="errors"></h:message>
 						
@@ -144,7 +144,7 @@
 						</f:facet>
 						<h:outputLabel value="Flight needed?" for="flightNeeded"></h:outputLabel>
 						<h:selectOneRadio id="flightNeeded"
-							value="#{infImpcIkmcRome1Bean.booking.flightNeeded}" required="true">
+							value="#{romeMeetingBean.booking.flightNeeded}" required="true">
 							<f:selectItem itemLabel="yes" itemValue="yes" />
 							<f:selectItem itemLabel="no" itemValue="no" />
 						</h:selectOneRadio>
@@ -160,20 +160,20 @@
 						</f:facet>
 						<h:outputLabel value="From:" for="outFlightFrom"></h:outputLabel>
 						<h:inputText id="outFlightFrom"
-							value="#{infImpcIkmcRome1Bean.booking.outboundFlightFrom}" size="40"></h:inputText>
+							value="#{romeMeetingBean.booking.outboundFlightFrom}" size="40"></h:inputText>
 						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
 						<h:message for="outFlightFrom" styleClass="errors"></h:message>
 
 						<h:outputLabel value="To:" for="outFlightTo"></h:outputLabel>
 						<h:inputText id="outFlightTo"
-							value="#{infImpcIkmcRome1Bean.booking.outboundFlightTo}" size="40"></h:inputText>
+							value="#{romeMeetingBean.booking.outboundFlightTo}" size="40"></h:inputText>
 						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
 						<h:message for="outFlightTo" styleClass="errors"></h:message>
 
 						<h:outputLabel value="Date:" for="outFlightDate"></h:outputLabel>
 						<h:panelGroup>
 							<h:inputText id="outFlightDate"
-								value="#{infImpcIkmcRome1Bean.booking.outboundFlightDate}" immediate="true"
+								value="#{romeMeetingBean.booking.outboundFlightDate}" immediate="true"
 								onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
 								<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
 							</h:inputText>
@@ -186,11 +186,11 @@
 
 						<h:outputLabel value="Arrival time:"></h:outputLabel>
 						<h:panelGrid columns="4" id="outFlightTime">
-							<h:selectOneMenu value="#{infImpcIkmcRome1Bean.booking.outboundFlightHour}" >
+							<h:selectOneMenu value="#{romeMeetingBean.booking.outboundFlightHour}" >
 								<f:selectItems value="#{outTimeSelectItems.hours}" />
 							</h:selectOneMenu>
 							<h:outputText value=" : " style="weight:bold;"></h:outputText>
-							<h:selectOneMenu value="#{infImpcIkmcRome1Bean.booking.outboundFlightMinute}">
+							<h:selectOneMenu value="#{romeMeetingBean.booking.outboundFlightMinute}">
 								<f:selectItems value="#{outTimeSelectItems.minutes}" />
 							</h:selectOneMenu>
 
@@ -207,20 +207,20 @@
 						</f:facet>
 						<h:outputLabel value="From:" for="returnFlightFrom"></h:outputLabel>
 						<h:inputText id="returnFlightFrom"
-							value="#{infImpcIkmcRome1Bean.booking.returnFlightFrom}" size="40"></h:inputText>
+							value="#{romeMeetingBean.booking.returnFlightFrom}" size="40"></h:inputText>
 						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
 						<h:message for="returnFlightFrom" styleClass="errors"></h:message>
 
 						<h:outputLabel value="To" for="returnFlightTo"></h:outputLabel>
 						<h:inputText id="returnFlightTo"
-							value="#{infImpcIkmcRome1Bean.booking.returnFlightTo}" size="40"></h:inputText>
+							value="#{romeMeetingBean.booking.returnFlightTo}" size="40"></h:inputText>
 						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
 						<h:message for="returnFlightTo" styleClass="errors"></h:message>
 
 						<h:outputLabel value="Date:" for="returnFlightDate"></h:outputLabel>
 						<h:panelGroup>
 							<h:inputText id="returnFlightDate"
-								value="#{infImpcIkmcRome1Bean.booking.returnFlightDate}" immediate="true"
+								value="#{romeMeetingBean.booking.returnFlightDate}" immediate="true"
 								onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
 								<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
 							</h:inputText>
@@ -233,11 +233,11 @@
 
 						<h:outputLabel value="Departure time:" for="returnFlightTime"></h:outputLabel>
 						<h:panelGrid columns="4" id="returnFlightTime">
-							<h:selectOneMenu value="#{infImpcIkmcRome1Bean.booking.returnFlightHour}">
+							<h:selectOneMenu value="#{romeMeetingBean.booking.returnFlightHour}">
 								<f:selectItems value="#{returnTimeSelectItems.hours}" />
 							</h:selectOneMenu>
 							<h:outputText value=" : " style="weight:bold;"></h:outputText>
-							<h:selectOneMenu value="#{infImpcIkmcRome1Bean.booking.returnFlightMinute}">
+							<h:selectOneMenu value="#{romeMeetingBean.booking.returnFlightMinute}">
 								<f:selectItems value="#{returnTimeSelectItems.minutes}" />
 							</h:selectOneMenu>
 
@@ -256,14 +256,14 @@
 						<h:outputLabel  value="Remarks:" for="remarks" escape="true">
 							
 						</h:outputLabel>
-						<h:inputTextarea id="remarks" value="#{infImpcIkmcRome1Bean.booking.remarks}"></h:inputTextarea>
+						<h:inputTextarea id="remarks" value="#{romeMeetingBean.booking.remarks}"></h:inputTextarea>
 						<h:message for="remarks" styleClass="errors"></h:message>
 					</h:panelGrid>
 					<h:outputText value="(email address: ana.decastro@helmholtz-muenchen.de)"></h:outputText>
 
 
 					<div class="buttons">
-						<SPAN class="button"><h:commandButton id="saveBooking" styleClass="save" actionListener="#{infImpcIkmcRome1Bean.bookEvent}"
+						<SPAN class="button"><h:commandButton id="saveBooking" styleClass="save" actionListener="#{romeMeetingBean.bookEvent}"
 								value="book event">
 							</h:commandButton>
 						</SPAN>
