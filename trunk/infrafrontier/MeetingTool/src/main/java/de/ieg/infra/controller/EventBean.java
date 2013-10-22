@@ -115,6 +115,7 @@ public class EventBean {
 		selectedEvent=(Event)this.eventTable.getRowData();
 		String beanName=selectedEvent.getForm()+"Bean";
 		logger.debug("showBookingForm: " + beanName);
+		// romeInfrafrontierWorkshopBean
 		// BookingFormI3KickOffBean i3KickOffBookingBean
 		navigationOutcome=selectedEvent.getForm();
 		
