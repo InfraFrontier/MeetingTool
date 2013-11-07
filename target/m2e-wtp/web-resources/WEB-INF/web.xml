@@ -2,10 +2,22 @@
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- Session will expire in 45minutes -->
 	<session-config>
-		<session-timeout>120</session-timeout>
+		<session-timeout>45</session-timeout>
 	</session-config>
 		
+	<context-param>
+    <param-name>com.sun.faces.numberOfViewsInSession</param-name>
+    <param-value>500</param-value>
+
+	</context-param>
+	<context-param>
+    <param-name>com.sun.faces.numberOfLogicalViews</param-name>
+    <param-value>500</param-value>
+	</context-param>
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/app-config.xml</param-value>
@@ -124,6 +136,10 @@ out in web.xml just in case you want those scopes later -->
 		<location>/jsp/error.jsp</location>
 	</error-page>
 	
+	<!-- >error-page>
+    	<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    	<location>/xhtml/infraFrontierEvents.xhtml</location>
+	</error-page -->
 
 </web-app>
 

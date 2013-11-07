@@ -56,7 +56,7 @@
 						
 						
 					</h:panelGrid>
-					<h:outputLabel value="Please note that attendance to these workshops is by invitation only" style="font-weight:bold;"></h:outputLabel>
+					<h:outputLabel value="The workshop is open to all participants, however, accommodation will be paid by EUCOMMTOOLS only for EUCOMMTOOLS delegates and the workshop speakers" style="font-weight:bold;"></h:outputLabel>
 
 					<h:message for="bookingForm" styleClass="message"></h:message>
 					<h:message for="bookGrid" styleClass="errorsGlobal"></h:message>
@@ -108,12 +108,17 @@
 						<f:facet name="header">
 							<h:outputText value="Accomodation Bettoja Hotels"></h:outputText>
 						</f:facet>
-						<h:outputText value="Please contact the hotel directly in case you need accommodation for 04/12/13" ></h:outputText>
-										
+						<h:outputLabel value="Accommodation needed 04/12/2013" escape="false"></h:outputLabel>
+                        <h:selectOneRadio id="eucommWorkshopHotel" value="#{romeEucommWorkshopBean.booking.hotelYesNo}" required="true" layout="pageDirection">
+                                <f:selectItem itemLabel="Yes, I am a EUCOMMTOOLS delegate or workshop speaker" itemValue="Yes, I am a EUCOMMTOOLS delegate or workshop speaker"/>
+                                <f:selectItem itemLabel="Yes, paid by my own funds" itemValue="Yes, paid by my own funds"/>
+                                <f:selectItem itemLabel="no" itemValue="no accomodation needed"/>
+                        </h:selectOneRadio>
+                        <h:message for="eucommWorkshopHotel" styleClass="errors"></h:message>
 					</h:panelGrid>
 					
 								
-					<h:outputText value="Please note that attendance to these workshops is by invitation only" style="font-weight:bold;"></h:outputText>
+					<h:outputText value="If you checked ‘yes’, Cornelia Kaloff will book accommodation at Hotel Massimo d’Azeglio for you. If you need accommodation but want to make other arrangements yourself, please inform Cornelia via e-mail." style="font-weight:bold;"></h:outputText>
 					<h:panelGrid columns="4" rowClasses="prop"
 						columnClasses="name,value,comment">
 						<f:facet name="header">
