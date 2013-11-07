@@ -74,6 +74,12 @@ private InfImpcIkmcRomeWorkshopBooking booking=new InfImpcIkmcRomeWorkshopBookin
 		text.append("\r\n");
 		text.append("\r\n");
 
+        text.append("Hotel\r\n");
+        text.append("Accommodation 04/12/2013:        ");
+        text.append(booking.getHotelYesNo());
+        text.append("\r\n");
+        text.append("\r\n");
+        
 		//workshops
 		text.append("Workshops\r\n");
 		text.append("EUCOMMTools Workshop:     ");
@@ -107,6 +113,8 @@ private InfImpcIkmcRomeWorkshopBooking booking=new InfImpcIkmcRomeWorkshopBookin
 		text.append("\t");
 		text.append(booking.getCountry());
 		text.append("\t");
+		text.append(booking.getHotelYesNo());
+        text.append("\t");
 		text.append(booking.getEucommWorkshop());
 		text.append("\t");	
 		text.append(booking.getRemarks());

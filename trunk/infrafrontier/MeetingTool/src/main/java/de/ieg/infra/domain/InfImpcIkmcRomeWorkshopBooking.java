@@ -6,6 +6,7 @@ import java.util.List;
 public class InfImpcIkmcRomeWorkshopBooking extends Booking{
 	private String impcWorkshop;
 	private String eucommWorkshop;
+	private String hotelYesNo;
 	
 	public String getImpcWorkshop() {
 		return impcWorkshop;
@@ -18,6 +19,19 @@ public class InfImpcIkmcRomeWorkshopBooking extends Booking{
 	}
 	public void setEucommWorkshop(String eucommWorkshop) {
 		this.eucommWorkshop = eucommWorkshop;
+	}
+	
+	/**
+	 * @return the hotelYesNo
+	 */
+	public String getHotelYesNo() {
+		return hotelYesNo;
+	}
+	/**
+	 * @param hotelYesNo the hotelYesNo to set
+	 */
+	public void setHotelYesNo(String hotelYesNo) {
+		this.hotelYesNo = hotelYesNo;
 	}
 	
 
