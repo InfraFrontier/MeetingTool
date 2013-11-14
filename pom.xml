@@ -654,7 +654,7 @@
 
 			<properties>
 				<baseUrl>//www.infrafrontier.eu</baseUrl>
-				<googleAnalytics>UA-40422777-2</googleAnalytics>
+				<googleAnalytics>UA-40422777-3</googleAnalytics>
 			</properties>
 
 			<build>
