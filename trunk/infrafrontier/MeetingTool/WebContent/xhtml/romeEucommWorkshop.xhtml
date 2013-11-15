@@ -106,13 +106,13 @@
 					<h:panelGrid columns="4" rowClasses="prop"
 						columnClasses="name,value,comment">
 						<f:facet name="header">
-							<h:outputText value="Accomodation Bettoja Hotels"></h:outputText>
+							<h:outputText value="Accommodation Bettoja Hotels"></h:outputText>
 						</f:facet>
 						<h:outputLabel value="Accommodation needed 04/12/2013" escape="false"></h:outputLabel>
                         <h:selectOneRadio id="eucommWorkshopHotel" value="#{romeEucommWorkshopBean.booking.hotelYesNo}" required="true" layout="pageDirection">
                                 <f:selectItem itemLabel="Yes, I am a EUCOMMTOOLS delegate or workshop speaker" itemValue="Yes, I am a EUCOMMTOOLS delegate or workshop speaker"/>
                                 <f:selectItem itemLabel="Yes, paid by my own funds" itemValue="Yes, paid by my own funds"/>
-                                <f:selectItem itemLabel="no" itemValue="no accomodation needed"/>
+                                <f:selectItem itemLabel="no" itemValue="no accommodation needed"/>
                         </h:selectOneRadio>
                         <h:message for="eucommWorkshopHotel" styleClass="errors"></h:message>
 					</h:panelGrid>
