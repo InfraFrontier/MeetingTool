@@ -9,6 +9,9 @@
      
 <ui:param name="path" value="#{request.contextPath}" />
 <ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
+<ui:param name="baseUrl" value="#{initParam['baseUrl']}" />
+<ui:param name="googleAnalytics" value="#{initParam['googleAnalytics']}" />
+<ui:param name="googleAnalyticsBaseUrl" value="#{initParam['googleAnalyticsBaseUrl']}" />
       
     <h:head>
     	<title><ui:insert name="title">Rome Infrafrontier Workshop</ui:insert></title>
@@ -18,13 +21,23 @@
 		<script type="text/javascript" src="#{path}/js/calendar.js"></script>
 		<script type="text/javascript" src="#{path}/js/calendar-en.js"></script>
 		<script type="text/javascript" src="#{path}/js/calendarHelper.js"></script>
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '#{googleAnalytics}', 'infrafrontier.eu');
+  ga('send', 'pageview');
+
+		</script>
 		<meta name="http-equiv" value="Content-Type"
 				content="text/html; charset=ISO-8859-2" />
     </h:head>
 
     <h:body>
     
- 	<div class="logo"> <a href="//www.infrafrontier.eu"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
+ 	<div class="logo"> <a href="#{baseUrl}"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
 
 	<f:view>
 			<h:form id="bookingForm" styleClass="dialog">
@@ -33,13 +46,13 @@
 					<h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
 						
 						<h:outputLabel value="Event:" for="eventName" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="eventName" value="#{infImpcIkmcRome2Bean.event.name}"></h:outputText>
+						<h:outputText id="eventName" value="#{romeInfrafrontierWorkshopBean.event.name}"></h:outputText>
 						<h:outputLabel value="Place:" for="place" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="place" value="#{infImpcIkmcRome2Bean.event.place}"></h:outputText>
+						<h:outputText id="place" value="#{romeInfrafrontierWorkshopBean.event.place}"></h:outputText>
 						<h:outputLabel value="From:" for="start" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="start" value="#{infImpcIkmcRome2Bean.event.start}"></h:outputText>
+						<h:outputText id="start" value="#{romeInfrafrontierWorkshopBean.event.start}"></h:outputText>
 						<h:outputLabel value="To:" for="end" style="font-weight:bold;"></h:outputLabel>
-						<h:outputText id="end" value="#{infImpcIkmcRome2Bean.event.end}"></h:outputText>
+						<h:outputText id="end" value="#{romeInfrafrontierWorkshopBean.event.end}"></h:outputText>
 						
 					</h:panelGrid>
 					<h:outputLabel value="Please note that attendance to these workshops is by invitation only" style="font-weight:bold;"></h:outputLabel>
@@ -56,33 +69,33 @@
 						</f:facet>
 
 						<h:outputLabel value="Last name:" for="lastName"></h:outputLabel>
-						<h:inputText id="lastName" value="#{infImpcIkmcRome2Bean.booking.lastName}" size="40"
+						<h:inputText id="lastName" value="#{romeInfrafrontierWorkshopBean.booking.lastName}" size="40"
 							required="true"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="lastName" styleClass="errors"></h:message>
 						
 
 						<h:outputLabel value="First name:" for="firstName"></h:outputLabel>
-						<h:inputText id="firstName" value="#{infImpcIkmcRome2Bean.booking.firstName}"
+						<h:inputText id="firstName" value="#{romeInfrafrontierWorkshopBean.booking.firstName}"
 							required="true" size="40"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="firstName" styleClass="errors" />
 
 
 						<h:outputLabel value="Email:" for="email"></h:outputLabel>
-						<h:inputText id="email" value="#{infImpcIkmcRome2Bean.booking.email}" required="true" size="30" validator="#{infImpcIkmcRome2Bean.validateEmail}"></h:inputText>
+						<h:inputText id="email" value="#{romeInfrafrontierWorkshopBean.booking.email}" required="true" size="30" validator="#{romeInfrafrontierWorkshopBean.validateEmail}"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="email" styleClass="errors"></h:message>
 						
 						
 
 						<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
-						<h:inputText id="institution" value="#{infImpcIkmcRome2Bean.booking.institution}" required="true" size="30"></h:inputText>
+						<h:inputText id="institution" value="#{romeInfrafrontierWorkshopBean.booking.institution}" required="true" size="30"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="institution" styleClass="errors"></h:message>
 
 						<h:outputLabel value="Country:" for="country"></h:outputLabel>
-						<h:inputText id="country" value="#{infImpcIkmcRome2Bean.booking.country}" required="true" size="30"></h:inputText>
+						<h:inputText id="country" value="#{romeInfrafrontierWorkshopBean.booking.country}" required="true" size="30"></h:inputText>
 						<h:panelGroup></h:panelGroup>
 						<h:message for="country" styleClass="errors"></h:message>
 
@@ -92,7 +105,7 @@
 					<h:panelGrid columns="4" rowClasses="prop"
 						columnClasses="name,value,comment">
 						<f:facet name="header">
-							<h:outputText value="Accomodation Bettoja Hotels"></h:outputText>
+							<h:outputText value="Accommodation Bettoja Hotels"></h:outputText>
 						</f:facet>
 						<h:outputText value="Please contact the hotel directly in case you need accommodation for 04/12/13" ></h:outputText>
 										
@@ -106,7 +119,7 @@
 							<h:outputText value="Workshops"></h:outputText>
 						</f:facet>
 						<h:outputLabel value="IMPC Phenotyping workshop:" for="impcWorkshop"></h:outputLabel>
-						<h:selectOneRadio id="impcWorkshop" value="#{infImpcIkmcRome2Bean.booking.impcWorkshop}" required="true">
+						<h:selectOneRadio id="impcWorkshop" value="#{romeInfrafrontierWorkshopBean.booking.impcWorkshop}" required="true">
 							<f:selectItem itemLabel="yes" itemValue="yes (impc workshop)"/>
 							<f:selectItem itemLabel="no" itemValue="no (impc workshop)"/>
 						</h:selectOneRadio>
@@ -122,14 +135,14 @@
 						<h:outputLabel  value="Remarks:" for="remarks" escape="true">
 							
 						</h:outputLabel>
-						<h:inputTextarea id="remarks" value="#{infImpcIkmcRome2Bean.booking.remarks}"></h:inputTextarea>
+						<h:inputTextarea id="remarks" value="#{romeInfrafrontierWorkshopBean.booking.remarks}"></h:inputTextarea>
 						<h:message for="remarks" styleClass="errors"></h:message>
 					</h:panelGrid>
 					<h:outputText value="(email address: h.gates@har.mrc.ac.uk)"></h:outputText>
 
 
 					<div class="buttons">
-						<SPAN class="button"><h:commandButton id="saveBooking" styleClass="save" actionListener="#{infImpcIkmcRome2Bean.bookEvent}"
+						<SPAN class="button"><h:commandButton id="saveBooking" styleClass="save" actionListener="#{romeInfrafrontierWorkshopBean.bookEvent}"
 								value="book event">
 							</h:commandButton>
 						</SPAN>

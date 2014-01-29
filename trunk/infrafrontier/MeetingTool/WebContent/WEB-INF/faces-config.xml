@@ -57,7 +57,15 @@
             <to-view-id>/xhtml/athenInfrafrontierMeeting.xhtml</to-view-id>
             <redirect />
         </navigation-case>
-    </navigation-rule>    	
+    </navigation-rule>
+    
+    <navigation-rule>
+   		<navigation-case>
+        	<from-outcome>munichWorkshop</from-outcome>
+            <to-view-id>/xhtml/munichWorkshop.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
 	<!--  >navigation-rule>
 		<navigation-case>
 			<from-outcome>infraFrontierEvents</from-outcome>

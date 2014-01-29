@@ -9,13 +9,40 @@
      
 <ui:param name="path" value="#{request.contextPath}" />
 <ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
+<ui:param name="baseUrl" value="#{initParam['baseUrl']}" />
+<ui:param name="googleAnalytics" value="#{initParam['googleAnalytics']}" />
+<ui:param name="googleAnalyticsBaseUrl" value="#{initParam['googleAnalyticsBaseUrl']}" />
       
     <h:head>
     	<title><ui:insert name="title">Infrafrontier Meeting Tool</ui:insert></title>
+		<meta name="author" content="Infrafrontier" />
+		<meta name="description" content="The Biological and Medical Science projects (ESFRI BMS) on the ESFRI roadmap meet regularly to discuss common issues. The ESFRI BMS group is in close contact with the ESFRI Health and Food Strategic Working Group (SWG). The ESFRI BMS group has published several common position papers on policy issues and works together in the BioMedBridges and EMTRAIN projects." />
+		<meta name="copyright" content="Infrafrontier" />
+		<link rel="shortcut icon" href="#{baseUrl}/sites/infrafrontier.eu/themes/custom/infrafrontier/img/favicon.ico" type="image/vnd.microsoft.icon" />
     	<h:outputStylesheet library="css" name="default.css"  />
+    	<style type="text/css" media="all">@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/ldap/ldap_user/ldap_user.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/date/date_api/date.css?mspj5o");
+@import url("#{baseUrl}/modules/search/search.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/views/css/views.css?mspj5o");</style>
+<style type="text/css" media="all">@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/ctools/css/ctools.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/modules/contrib/ldap/ldap_servers/ldap_servers.admin.css?mspj5o");</style>
+<style type="text/css" media="all">@import url("#{baseUrl}/sites/infrafrontier.eu/themes/custom/infrafrontier/css/default.css?mspj5o");
+@import url("#{baseUrl}/sites/infrafrontier.eu/themes/custom/infrafrontier/css/ebi.css?mspj5o");
+</style>
+    	
+    	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '#{googleAnalytics}', 'infrafrontier.eu');
+  ga('send', 'pageview');
+
+		</script>
     </h:head>
     <h:body>
- 	<div class="logo"> <a href="//www.infrafrontier.eu"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
+ 	<div class="logo"> <a href="#{baseUrl}"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
 		
 		<f:view>
 			<h:form id="eventForm">
@@ -30,7 +57,7 @@
 						style="font-size: 20px"></h:outputText>
  
  					<h:dataTable var="event" value="#{eventBean.events}" binding="#{eventBean.eventTable}" border="1"
-						 headerClass="tableheader">
+						 headerClass="head">
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Event"></h:outputText>

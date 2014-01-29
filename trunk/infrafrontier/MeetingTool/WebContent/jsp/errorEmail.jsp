@@ -33,7 +33,7 @@
 
 					<h:outputText id="confirmationMessage"
 						value="Your request was submitted successfully and will be processed as soon as possible."></h:outputText>
-    <h:outputText value="A confirmation message can't be sent by email due to an error!" styleClass="errors"></h:outputText>
+    <h:outputText value="A confirmation message can't be sent by email due to an error! Please contact INFRAFRONTIER project office (ana.decastro@helmholtz-muenchen.de)" styleClass="errors"></h:outputText>
    
 				</h:panelGrid>
 			</h:form>

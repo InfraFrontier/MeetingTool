@@ -9,6 +9,9 @@
      
 <ui:param name="path" value="#{request.contextPath}" />
 <ui:param name="basePath" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" /> 
+<ui:param name="baseUrl" value="#{initParam['baseUrl']}" />
+<ui:param name="googleAnalytics" value="#{initParam['googleAnalytics']}" />
+<ui:param name="googleAnalyticsBaseUrl" value="#{initParam['googleAnalyticsBaseUrl']}" />
       
     <h:head>
     	<title><ui:insert name="title">Rome Infrafrontier Workshop</ui:insert></title>
@@ -18,13 +21,23 @@
 		<script type="text/javascript" src="#{path}/js/calendar.js"></script>
 		<script type="text/javascript" src="#{path}/js/calendar-en.js"></script>
 		<script type="text/javascript" src="#{path}/js/calendarHelper.js"></script>
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '#{googleAnalytics}', 'infrafrontier.eu');
+  ga('send', 'pageview');
+
+		</script>
 		<meta name="http-equiv" value="Content-Type"
 				content="text/html; charset=ISO-8859-2" />
     </h:head>
 
     <h:body>
     
- 	<div class="logo"> <a href="//www.infrafrontier.eu"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
+ 	<div class="logo"> <a href="#{baseUrl}"><img src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier"/></a></div>
 
 	<f:view>
 			<h:form id="bookingForm" styleClass="dialog">
@@ -43,7 +56,7 @@
 						
 						
 					</h:panelGrid>
-					<h:outputLabel value="Please note that attendance to these workshops is by invitation only" style="font-weight:bold;"></h:outputLabel>
+					<h:outputLabel value="The workshop is open to all participants, however, accommodation will be paid by EUCOMMTOOLS only for EUCOMMTOOLS delegates and the workshop speakers" style="font-weight:bold;"></h:outputLabel>
 
 					<h:message for="bookingForm" styleClass="message"></h:message>
 					<h:message for="bookGrid" styleClass="errorsGlobal"></h:message>
@@ -93,14 +106,19 @@
 					<h:panelGrid columns="4" rowClasses="prop"
 						columnClasses="name,value,comment">
 						<f:facet name="header">
-							<h:outputText value="Accomodation Bettoja Hotels"></h:outputText>
+							<h:outputText value="Accommodation Bettoja Hotels"></h:outputText>
 						</f:facet>
-						<h:outputText value="Please contact the hotel directly in case you need accommodation for 04/12/13" ></h:outputText>
-										
+						<h:outputLabel value="Accommodation needed 04/12/2013" escape="false"></h:outputLabel>
+                        <h:selectOneRadio id="eucommWorkshopHotel" value="#{romeEucommWorkshopBean.booking.hotelYesNo}" required="true" layout="pageDirection">
+                                <f:selectItem itemLabel="Yes, I am a EUCOMMTOOLS delegate or workshop speaker" itemValue="Yes, I am a EUCOMMTOOLS delegate or workshop speaker"/>
+                                <f:selectItem itemLabel="Yes, paid by my own funds" itemValue="Yes, paid by my own funds"/>
+                                <f:selectItem itemLabel="no" itemValue="no accommodation needed"/>
+                        </h:selectOneRadio>
+                        <h:message for="eucommWorkshopHotel" styleClass="errors"></h:message>
 					</h:panelGrid>
 					
 								
-					<h:outputText value="Please note that attendance to these workshops is by invitation only" style="font-weight:bold;"></h:outputText>
+					<h:outputText value="If you checked ‘yes’, Cornelia Kaloff will book accommodation at Hotel Massimo d’Azeglio for you. If you need accommodation but want to make other arrangements yourself, please inform Cornelia via e-mail." style="font-weight:bold;"></h:outputText>
 					<h:panelGrid columns="4" rowClasses="prop"
 						columnClasses="name,value,comment">
 						<f:facet name="header">
