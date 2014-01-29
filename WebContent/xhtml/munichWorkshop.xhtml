@@ -114,6 +114,7 @@ Extra nights will NOT be covered nor be booked by INFRAFRONTIER Project Office. 
 						<f:facet name="header">
 							<h:outputText value="Accommodation"></h:outputText>
 						</f:facet>
+						
 						<h:outputLabel value="Accomodation needed?" for="accomodationNeeded"></h:outputLabel>
 						<h:selectOneRadio id="accomodationNeeded"
 						value="#{munichWorkshopBean.booking.hotelYesNo}" required="true">
@@ -131,7 +132,6 @@ Extra nights will NOT be covered nor be booked by INFRAFRONTIER Project Office. 
 						<h:panelGroup></h:panelGroup>
 						<h:message for="nightsEuropeans" styleClass="errors"></h:message>
 						
-						
 						<h:outputLabel value="Non-European Participants:" for="nightsNonEuropeans"></h:outputLabel>
 						<h:selectManyCheckbox id="nightsNonEuropeans" value="#{munichWorkshopBean.booking.numberOfNightsNonEuropeans}">
 							<f:selectItem itemLabel="07.05.2014" itemValue="07.05.2014"/>
@@ -143,6 +143,11 @@ Extra nights will NOT be covered nor be booked by INFRAFRONTIER Project Office. 
 						
 					</h:panelGrid>
 
+<h:panelGrid columns="4" rowClasses="prop"
+columnClasses="name,value,comment">
+						
+<f:facet name="header">
+							
 <h:outputText value="Dinner 8 May 2014, 20:00">
 </h:outputText>
 						
