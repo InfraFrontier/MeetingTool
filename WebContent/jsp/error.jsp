@@ -40,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h2>Sorry, the database is not available at the moment</h2>
-    <p>Please try again later or contact :<img src="<%=basePath%>/images/info.jpg"/></p>
+    <p>Please try again later or contact :<br>   
+    ana.decastro@helmholtz-muenchen.de or steinkamp@helmholtz-muenchen.de</p>
   </body>
 </html>

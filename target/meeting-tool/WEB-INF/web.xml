@@ -2,10 +2,22 @@
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- Session will expire in 45minutes -->
 	<session-config>
-		<session-timeout>120</session-timeout>
+		<session-timeout>45</session-timeout>
 	</session-config>
 		
+	<context-param>
+    <param-name>com.sun.faces.numberOfViewsInSession</param-name>
+    <param-value>500</param-value>
+
+	</context-param>
+	<context-param>
+    <param-name>com.sun.faces.numberOfLogicalViews</param-name>
+    <param-value>500</param-value>
+	</context-param>
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/app-config.xml</param-value>
@@ -26,6 +38,21 @@
 		<param-name>log4jConfigLocation</param-name>
 		<param-value>/WEB-INF/classes/log4j.xml</param-value>
 	</context-param>
+
+	<context-param>
+      <param-name>baseUrl</param-name>
+      <param-value></param-value>
+   </context-param>
+   
+   <context-param>
+      <param-name>googleAnalytics</param-name>
+      <param-value></param-value>
+   </context-param>
+   
+   <context-param>
+      <param-name>googleAnalyticsBaseUrl</param-name>
+      <param-value></param-value>
+   </context-param>
 
 	<!-- Just here so the JSF implementation can initialize, *not* used at runtime -->
 	<servlet>
@@ -80,7 +107,7 @@
 	</listener>
 	
 <!-- Lets you give request or session scopes to beans in applicationContext.xml. 
-If you don’t use these scopes, this listener is not required. But you should probably have this entry commented
+If you don???t use these scopes, this listener is not required. But you should probably have this entry commented
 out in web.xml just in case you want those scopes later -->	
   <listener>
     <listener-class>
@@ -109,6 +136,10 @@ out in web.xml just in case you want those scopes later -->
 		<location>/jsp/error.jsp</location>
 	</error-page>
 	
+	<!-- >error-page>
+    	<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    	<location>/xhtml/infraFrontierEvents.xhtml</location>
+	</error-page -->
 
 </web-app>
 
