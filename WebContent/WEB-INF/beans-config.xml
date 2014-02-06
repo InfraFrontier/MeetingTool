@@ -108,6 +108,11 @@
 		<property name="bookingDao" ref="bookingDao"></property>
 		<property name="mailService" ref="mailService"></property>
 	</bean>
+	
+	<bean id="managementWorkshopBean" class="de.ieg.infra.controller.ManagementWorkshopBookingBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>
 
 	<!-- ******************************** select items ****************************  -->
 
