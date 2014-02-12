@@ -9,10 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import de.ieg.infra.controller.EventBean;
 import de.ieg.infra.dao.EventDao;
-
-import de.ieg.infra.domain.Booking;
 import de.ieg.infra.domain.Event;
 
 /**

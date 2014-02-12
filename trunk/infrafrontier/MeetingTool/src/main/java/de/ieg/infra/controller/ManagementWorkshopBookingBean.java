@@ -176,6 +176,7 @@ public class ManagementWorkshopBookingBean extends BookingBean {
 
 			event.setBooking(booking);
 
+			bookingDao.insertManagementWorkshopBooking(event.getId(),booking);
 			String confirmationText = this.generateEmailConfirmationText();
 
 			String bookingText = this.generateBookingText();
