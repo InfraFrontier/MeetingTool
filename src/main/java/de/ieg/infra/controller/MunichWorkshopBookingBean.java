@@ -223,6 +223,8 @@ public class MunichWorkshopBookingBean extends BookingBean {
 		try {
 			Event event=this.getEvent();
 			event.setBooking(booking);
+			
+			bookingDao.insertMunichWorkshopBooking(event.getId(),booking);
 			String confirmationText=this.generateEmailConfirmationText();
 			String bookingText=this.generateBookingText();
 			super.sendEmailConfirmation(event,confirmationText,bookingText);
