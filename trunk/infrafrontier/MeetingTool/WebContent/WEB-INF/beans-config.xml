@@ -114,6 +114,11 @@
 		<property name="mailService" ref="mailService"></property>
 	</bean>
 
+	<bean id="pragueWorkshopBean" class="de.ieg.infra.controller.PragueWorkshopBookingBean" scope="session">
+		<property name="bookingDao" ref="bookingDao"></property>
+		<property name="mailService" ref="mailService"></property>
+	</bean>
+	
 	<!-- ******************************** select items ****************************  -->
 
 	<bean id="outTimeSelectItems" class="de.ieg.infra.selectitems.TimeSelectItems" scope="session"></bean>

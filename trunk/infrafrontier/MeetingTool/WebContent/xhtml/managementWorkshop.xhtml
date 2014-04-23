@@ -201,30 +201,15 @@
 					value="Please note that all travel and accommodation costs  must be covered by the participants. INFRAFRONTIER will assist you with booking accommodation if required.">
 				</h:outputText>
 
-
-
-
-				<h:outputText value="(email address: info@infrafrontier.eu)">
-				</h:outputText>
+				<h:outputText value="(email address: info@infrafrontier.eu)"></h:outputText>
+				
 				<div class="buttons">
-
-					<SPAN class="button"> <h:commandButton id="saveBooking"
-							styleClass="save"
-							actionListener="#{managementWorkshopBean.bookEvent}"
-							value="book event">
-
-						</h:commandButton>
-
+					<SPAN class="button"><h:commandButton id="saveBooking" styleClass="save" actionListener="#{managementWorkshopBean.bookEvent}" 
+					value="book event"></h:commandButton>
 					</SPAN>
-
 				</div>
-
-				<h:message for="saveBooking" styleClass="errors">
-				</h:message>
-
-
+				<h:message for="saveBooking" styleClass="errors"></h:message>
 			</h:panelGrid>
-
 		</h:form>
 	</f:view>
 </h:body>
