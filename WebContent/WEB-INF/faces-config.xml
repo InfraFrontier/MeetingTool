@@ -74,7 +74,15 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
-        
+
+    <navigation-rule>
+   		<navigation-case>
+        	<from-outcome>pragueWorkshop</from-outcome>
+            <to-view-id>/xhtml/pragueWorkshop.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+            
 	<!--  >navigation-rule>
 		<navigation-case>
 			<from-outcome>infraFrontierEvents</from-outcome>
