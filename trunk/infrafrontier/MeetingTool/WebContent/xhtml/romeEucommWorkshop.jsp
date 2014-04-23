@@ -14,7 +14,7 @@
 <f:view>
 	<html>
 		<head>
-			<title>Infrafrontier Meeting Tool</title>
+			<title>Prague Workshop Registration</title>
 			<meta http-equiv="pragma" content="no-cache">
 			<meta http-equiv="cache-control" content="no-cache">
 			<meta http-equiv="expires" content="0">
