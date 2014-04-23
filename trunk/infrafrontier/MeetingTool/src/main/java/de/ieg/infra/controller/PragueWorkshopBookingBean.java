@@ -86,7 +86,7 @@ public class PragueWorkshopBookingBean extends BookingBean {
 		text.append("\r\n");
 		
 		//Dinner
-		text.append("Dinner needed (Restaurant ‘La Rotonde’):     ");
+		text.append("Dinner needed (Restaurant 'La Rotonde'):     ");
 		text.append(booking.getDinnerNeeded());
 		text.append("\r\n");
 		text.append("\r\n");
