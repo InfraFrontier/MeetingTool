@@ -10,6 +10,7 @@ import de.ieg.infra.domain.InfrafrontierI3KickOffMeetingBooking;
 import de.ieg.infra.domain.AthenInfrafrontierBooking;
 import de.ieg.infra.domain.ManagementWorkshopBooking;
 import de.ieg.infra.domain.MunichWorkshopBooking;
+import de.ieg.infra.domain.PragueWorkshopBooking;
 
 public class BookingDaoImpl extends JdbcTemplate implements BookingDao{
 
@@ -130,6 +131,22 @@ public class BookingDaoImpl extends JdbcTemplate implements BookingDao{
 	update(sql,new Object [] {eventId,booking.getFirstName(),booking.getLastName(),booking.getEmail()});
 	}
 	
+	public void insertPragueWorkshopBooking(Integer eventId,PragueWorkshopBooking  booking) throws DataAccessException{
+		String sql="INSERT INTO bookings ("
+        +"booking_event,"
+		+"booking_first_name,"
+        +"booking_second_name,"
+        +"booking_email,"
+        +"booking_remarks,"
+        +"booking_institution,"
+        +"booking_country," 
+        +"booking_hotel_needed,"
+        +"booking_attend_dinner"
+        +") "
+        +"VALUES (?,?,?,?,?,?,?,?,?)";
+
+	update(sql,new Object [] {eventId,booking.getFirstName(),booking.getLastName(),booking.getEmail(),booking.getRemarks(),booking.getInstitution(),booking.getCountry(),booking.getAccommodationYesNo(),booking.getDinnerNeeded()});
+	}	
 	
 
 }
