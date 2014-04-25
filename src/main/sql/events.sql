@@ -22,7 +22,7 @@ values("INFRAFRONTIER/IMPC Workshop: Promoting the international exchange of mou
 "08.05.2014", "09.05.2014", "Sheraton Airport Hotel, Munich, Germany", 1, "", "munichWorkshop", "ana.decastro@helmholtz-muenchen.de");
 
 insert into events(event_name,event_start,event_end,event_place,event_is_active,event_comment,event_form, event_contact) 
-values("INFRAFRONTIER–I3 Board of Participant Directors Meeting, Prague, June 2014", 
+values("INFRAFRONTIER-I3 Board of Participant Directors Meeting, Prague, June 2014", 
 "03 June 2014, 12:00", "04 June 2014, 14:00", "Hilton Prague Old Town, Prague, Czech Republic", 1, "", "pragueWorkshop", "ana.decastro@helmholtz-muenchen.de");
 
 
