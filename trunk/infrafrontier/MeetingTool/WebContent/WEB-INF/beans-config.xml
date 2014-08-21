@@ -118,6 +118,16 @@
 		<property name="bookingDao" ref="bookingDao"></property>
 		<property name="mailService" ref="mailService"></property>
 	</bean>
+        
+        <bean id="barcelonaWorkshopBean" class="de.ieg.infra.controller.BarcelonaWorkshopBookingBean" scope="session">
+<property name="mailService" ref="mailService"></property>
+<property name="bookingDao" ref="bookingDao"></property>
+</bean>
+ 
+<bean id="marseilleWorkshopBean" class="de.ieg.infra.controller.MarseilleWorkshopBookingBean" scope="session">
+<property name="mailService" ref="mailService"></property>
+<property name="bookingDao" ref="bookingDao"></property>
+</bean>
 	
 	<!-- ******************************** select items ****************************  -->
 

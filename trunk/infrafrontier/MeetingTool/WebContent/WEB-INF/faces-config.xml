@@ -98,6 +98,22 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+        
+        <navigation-rule>
+<navigation-case>
+<from-outcome>barcelonaWorkshop</from-outcome>
+<to-view-id>/xhtml/BarcelonaWorkshop.jsp</to-view-id>
+<redirect />
+</navigation-case>
+</navigation-rule>
+ 
+<navigation-rule>
+<navigation-case>
+<from-outcome>marseilleWorkshop</from-outcome>
+<to-view-id>/xhtml/MarseilleWorkshop.jsp</to-view-id>
+<redirect />
+</navigation-case>
+</navigation-rule>
 	
 </faces-config>
 

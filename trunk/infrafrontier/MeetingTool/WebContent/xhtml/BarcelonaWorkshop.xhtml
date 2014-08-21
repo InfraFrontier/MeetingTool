@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="path" value="#{request.contextPath}" />
+<ui:param name="basePath"
+	value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" />
+<ui:param name="baseUrl" value="#{initParam['baseUrl']}" />
+<ui:param name="googleAnalytics" value="#{initParam['googleAnalytics']}" />
+<ui:param name="googleAnalyticsBaseUrl"
+	value="#{initParam['googleAnalyticsBaseUrl']}" />
+
+<h:head>
+	<title><ui:insert name="title">INFRAFRONTIER Prague Workshop</ui:insert></title>
+	<h:outputStylesheet library="css" name="default.css" />
+	<h:outputStylesheet library="css" name="calendar-win2k-1.css" />
+	<!-- import the calendar script -->
+	<script type="text/javascript" src="#{path}/js/calendar.js"></script>
+	<script type="text/javascript" src="#{path}/js/calendar-en.js"></script>
+	<script type="text/javascript" src="#{path}/js/calendarHelper.js"></script>
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', '#{googleAnalytics}', 'infrafrontier.eu');
+		ga('send', 'pageview');
+	</script>
+	<meta name="http-equiv" value="Content-Type"
+		content="text/html; charset=ISO-8859-2" />
+</h:head>
+
+<h:body>
+
+	<div class="logo">
+		<a href="#{baseUrl}"><img
+			src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier" /></a>
+	</div>
+
+	<f:view>
+		<h:form id="bookingForm" styleClass="dialog">
+			<h:panelGrid columns="1" id="bookGrid">
+
+				<h:panelGrid columns="2" rowClasses="prop"
+					columnClasses="name,value">
+					
+				<h:outputLabel value="Event:" for="eventName"
+					style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="eventName"
+					value="#{barcelonaWorkshopBean.event.name}"></h:outputText>
+				<h:outputLabel value="Location:" for="Location"
+					style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="Location"
+					value="#{barcelonaWorkshopBean.event.place}"></h:outputText>
+				<h:outputLabel value="From:" for="start" style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="start" value="#{barcelonaWorkshopBean.event.start}"></h:outputText>
+				<h:outputLabel value="To:" for="end" style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="end" value="#{barcelonaWorkshopBean.event.end}"></h:outputText>
+			</h:panelGrid>
+
+			<h:message for="bookingForm" styleClass="message"></h:message>
+			<h:message for="bookGrid" styleClass="errorsGlobal"></h:message>
+
+
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+				<f:facet name="header">
+					<h:outputText value="Personal information:"></h:outputText>
+				</f:facet>
+
+				<h:outputLabel value="Last name:" for="lastName">
+				</h:outputLabel>
+				<h:inputText id="lastName"
+					value="#{barcelonaWorkshopBean.booking.firstName}" required="true"
+					size="40">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="lastName" styleClass="errors" />
+
+				<h:outputLabel value="First name:" for="firstName"></h:outputLabel>
+				<h:inputText id="firstName"
+					value="#{barcelonaWorkshopBean.booking.lastName}" size="40"
+					required="true">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="firstName" styleClass="errors"></h:message>
+
+				<h:outputLabel value="Email:" for="email"></h:outputLabel>
+				<h:inputText id="email" value="#{barcelonaWorkshopBean.booking.email}"
+					required="true" size="30"
+					validator="#{barcelonaWorkshopBean.validateEmail}">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="email" styleClass="errors"></h:message>
+
+				<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
+				<h:inputText id="institution"
+					value="#{barcelonaWorkshopBean.booking.institution}" required="true"
+					size="30">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="institution" styleClass="errors"></h:message>
+
+				<h:outputLabel value="Country:" for="country"></h:outputLabel>
+				<h:inputText id="country"
+					value="#{barcelonaWorkshopBean.booking.country}" required="true"
+					size="30">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="country" styleClass="errors"></h:message>
+			</h:panelGrid>
+
+
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+
+				<f:facet name="header">
+					<h:outputText value="Accommodation"></h:outputText>
+				</f:facet>
+
+				<h:outputLabel value="Accommodation needed?" for="accommodationNeeded"></h:outputLabel>
+				<h:selectOneRadio id="accommodationNeeded"
+					value="#{barcelonaWorkshopBean.booking.accommodationYesNo}" required="true">
+					<f:selectItem itemLabel="no" itemValue="no" />
+					<f:selectItem itemLabel="yes" itemValue="yes" />
+				</h:selectOneRadio>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="accommodationNeeded" styleClass="errors"></h:message>
+
+				<h:outputLabel value="Number of nights:" for="numberofNights"></h:outputLabel>
+				<h:selectManyCheckbox id="numberofNights"
+					value="#{barcelonaWorkshopBean.booking.numberOfNights}">
+					<f:selectItem itemLabel="12.11.2014" itemValue="12.11.2014" />
+					<f:selectItem itemLabel="13.11.2014" itemValue="13.11.2014" />
+				</h:selectManyCheckbox>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="numberofNights" styleClass="errors"></h:message>
+			</h:panelGrid>
+
+<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment">
+						<f:facet name="header">
+							<h:outputText value="Travel"></h:outputText>
+						</f:facet>
+						<h:outputLabel value="Flight needed?" for="flightNeeded"></h:outputLabel>
+						<h:selectOneRadio id="flightNeeded"
+							value="#{barcelonaWorkshopBean.booking.flightNeeded}" required="true">
+							<f:selectItem itemLabel="yes" itemValue="yes" />
+							<f:selectItem itemLabel="no" itemValue="no" />
+						</h:selectOneRadio>
+						<h:outputText
+							value="choose no if you attend  the event, but don't need a flight" style="font-style: italic"></h:outputText>
+						<h:message for="flightNeeded" styleClass="errors"></h:message>
+					</h:panelGrid>
+					
+					<h:panelGrid columns="4" rowClasses="prop"
+						columnClasses="name,value,comment" rendered="true">
+						<f:facet name="header">
+							<h:outputText value="Flight to meeting"></h:outputText>
+						</f:facet>
+						<h:outputLabel value="From:" for="outFlightFrom"></h:outputLabel>
+						<h:inputText id="outFlightFrom"
+							value="#{barcelonaWorkshopBean.booking.outboundFlightFrom}" size="40"></h:inputText>
+						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
+						<h:message for="outFlightFrom" styleClass="errors"></h:message>
+
+						<h:outputLabel value="To:" for="outFlightTo"></h:outputLabel>
+						<h:inputText id="outFlightTo"
+							value="#{barcelonaWorkshopBean.booking.outboundFlightTo}" size="40"></h:inputText>
+						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
+						<h:message for="outFlightTo" styleClass="errors"></h:message>
+
+						<h:outputLabel value="Date:" for="outFlightDate"></h:outputLabel>
+						<h:panelGroup>
+							<h:inputText id="outFlightDate"
+								value="#{barcelonaWorkshopBean.booking.outboundFlightDate}" immediate="true"
+								onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
+								<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
+							</h:inputText>
+							<h:graphicImage url="/images/calendar.gif"
+								styleClass="calendar-icon"
+								onclick="return showCalendar('bookingForm:outFlightDate', 'd.m.y');" />
+						</h:panelGroup>
+						<h:outputText value="please use dd.mm.yyyy format" style="font-style: italic"></h:outputText>
+						<h:message for="outFlightDate" styleClass="errors"></h:message>
+
+						<h:outputLabel value="Arrival time:"></h:outputLabel>
+						<h:panelGrid columns="4" id="outFlightTime">
+							<h:selectOneMenu value="#{barcelonaWorkshopBean.booking.outboundFlightHour}" >
+								<f:selectItems value="#{outTimeSelectItems.hours}" />
+							</h:selectOneMenu>
+							<h:outputText value=" : " style="weight:bold;"></h:outputText>
+							<h:selectOneMenu value="#{barcelonaWorkshopBean.booking.outboundFlightMinute}">
+								<f:selectItems value="#{outTimeSelectItems.minutes}" />
+							</h:selectOneMenu>
+
+						</h:panelGrid>
+
+						<h:outputText value="e.g. 16:30 arrival time" style="font-style: italic"></h:outputText>
+						<h:message for="outFlightTime" styleClass="errors"></h:message>
+					</h:panelGrid>
+
+
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+
+				<h:outputLabel value="Remarks:" for="remarks" escape="true"></h:outputLabel>
+				<h:inputTextarea id="remarks"
+					value="#{barcelonaWorkshopBean.booking.remarks}">
+				</h:inputTextarea>
+				<h:message for="remarks" styleClass="errors"></h:message>
+			</h:panelGrid>
+
+			<h:outputText
+				value="(email address: ana.decastro@helmholtz-muenchen.de)">
+			</h:outputText>
+
+			<div class="buttons">
+				<SPAN class="button"> <h:commandButton id="saveBooking"
+						styleClass="save" actionListener="#{barcelonaWorkshopBean.bookEvent}"
+						value="book event">
+					</h:commandButton> </SPAN>
+				</div>
+				<h:message for="saveBooking" styleClass="errors"></h:message>
+			</h:panelGrid>
+		</h:form>
+	</f:view>
+</h:body>
+</html>
