@@ -10,6 +10,8 @@ import de.ieg.infra.domain.AthenInfrafrontierBooking;
 import de.ieg.infra.domain.ManagementWorkshopBooking;
 import de.ieg.infra.domain.MunichWorkshopBooking;
 import de.ieg.infra.domain.PragueWorkshopBooking;
+import de.ieg.infra.domain.BarcelonaWorkshopBooking;
+import de.ieg.infra.domain.MarseilleWorkshopBooking;
 
 /**
  * @author steinkamp
@@ -24,6 +26,7 @@ public interface BookingDao {
 	 * @param booking
 	 * @throws DataAccessException
 	 */
+    
 	public void insertInfrafrontierI3KickOffMeetingBooking(Integer eventId,InfrafrontierI3KickOffMeetingBooking booking) throws DataAccessException;
 	
 	public void insertInfImpcIkmcRome1Booking(Integer eventId, InfImpcIkmcRome1Booking booking) throws DataAccessException;
@@ -37,5 +40,9 @@ public interface BookingDao {
 	public void insertManagementWorkshopBooking(Integer eventId,ManagementWorkshopBooking booking) throws DataAccessException;
 	
 	public void insertPragueWorkshopBooking(Integer eventId,PragueWorkshopBooking  booking) throws DataAccessException;
+        
+        public void insertBarcelonaWorkshopBooking(Integer eventId,BarcelonaWorkshopBooking  booking) throws DataAccessException;
+        
+       // public void insertMarseileeWorkshopBooking(Integer eventId,MarseilleWorkshopBooking  booking) throws DataAccessException;
 	
 }
