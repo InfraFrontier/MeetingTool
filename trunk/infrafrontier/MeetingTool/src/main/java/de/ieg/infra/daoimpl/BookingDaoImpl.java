@@ -181,5 +181,33 @@ public class BookingDaoImpl extends JdbcTemplate implements BookingDao{
 			booking.getReturnFlightFrom(),booking.getReturnFlightTo(),booking.getReturnFlightDate(),booking.getReturnFlightTime()});
 }
 	
+public void insertMarseilleWorkshopBooking(Integer eventId, MarseilleWorkshopBooking booking) throws DataAccessException{
+            System.out.println("the method to insert booking has been called");
+		String sql="INSERT INTO bookings ("
+        +"booking_event,"
+		+"booking_first_name,"
+        +"booking_second_name,"
+        +"booking_email,"
+        +"booking_remarks,"
+        +"booking_institution,"
+        +"booking_country," +
+        "booking_sex," +
+        "booking_hotel_needed," +
+        "booking_flight_needed," +
+        "booking_outbound_flight_from," +
+        "booking_outbound_flight_to," +
+        "booking_outbound_flight_date," +
+        "booking_outbound_flight_time," +
+        "booking_return_flight_from," +
+        "booking_return_flight_to," +
+        "booking_return_flight_date," +
+        "booking_return_flight_time" +
+        "" +
+        ") "
+        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
+	update(sql,new Object [] {eventId,booking.getFirstName(),booking.getLastName(),booking.getEmail(),booking.getRemarks(),booking.getInstitution(),booking.getCountry(),booking.getSex(),booking.getAccommodationYesNo(),
+			booking.getFlightNeeded(),booking.getOutboundFlightFrom(),booking.getOutboundFlightTo(),booking.getOutboundFlightDate(),booking.getOutboundFlightTime(),
+			booking.getReturnFlightFrom(),booking.getReturnFlightTo(),booking.getReturnFlightDate(),booking.getReturnFlightTime()});
+}
 }

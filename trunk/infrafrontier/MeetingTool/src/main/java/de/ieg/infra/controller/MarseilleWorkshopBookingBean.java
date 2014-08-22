@@ -103,6 +103,8 @@ text.append(booking.getLastName());
 
 text.append("\r\n");
 
+text.append("Sex:        ");
+
 text.append(booking.getSex());
 
 text.append("\r\n");
@@ -363,6 +365,7 @@ return text.toString();
 		try {
 			Event event=this.getEvent();
 			event.setBooking(booking);
+                         bookingDao.insertMarseilleWorkshopBooking(event.getId(), booking);
 			String confirmationText=this.generateEmailConfirmationText();
 			String bookingText=this.generateBookingText();
 			super.sendEmailConfirmation(event,confirmationText,bookingText);

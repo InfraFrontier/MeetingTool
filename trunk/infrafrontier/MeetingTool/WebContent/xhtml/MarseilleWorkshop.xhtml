@@ -15,7 +15,7 @@
 	value="#{initParam['googleAnalyticsBaseUrl']}" />
 
 <h:head>
-	<title><ui:insert name="title">INFRAFRONTIER Barcelona Workshop</ui:insert></title>
+	<title><ui:insert name="title">INFRAFRONTIER Marseille Workshop</ui:insert></title>
 	<h:outputStylesheet library="css" name="default.css" />
 	<h:outputStylesheet library="css" name="calendar-win2k-1.css" />
 	<!-- import the calendar script -->
@@ -59,15 +59,15 @@
 				<h:outputLabel value="Event:" for="eventName"
 					style="font-weight:bold;"></h:outputLabel>
 				<h:outputText id="eventName"
-					value="#{barcelonaWorkshopBean.event.name}"></h:outputText>
+					value="#{marseilleWorkshopBean.event.name}"></h:outputText>
 				<h:outputLabel value="Location:" for="Location"
 					style="font-weight:bold;"></h:outputLabel>
 				<h:outputText id="Location"
-					value="#{barcelonaWorkshopBean.event.place}"></h:outputText>
+					value="#{marseilleWorkshopBean.event.place}"></h:outputText>
 				<h:outputLabel value="From:" for="start" style="font-weight:bold;"></h:outputLabel>
-				<h:outputText id="start" value="#{barcelonaWorkshopBean.event.start}"></h:outputText>
+				<h:outputText id="start" value="#{marseilleWorkshopBean.event.start}"></h:outputText>
 				<h:outputLabel value="To:" for="end" style="font-weight:bold;"></h:outputLabel>
-				<h:outputText id="end" value="#{barcelonaWorkshopBean.event.end}"></h:outputText>
+				<h:outputText id="end" value="#{marseilleWorkshopBean.event.end}"></h:outputText>
 			</h:panelGrid>
 
 			<h:message for="bookingForm" styleClass="message"></h:message>
@@ -83,7 +83,7 @@
 				<h:outputLabel value="Last name:" for="lastName">
 				</h:outputLabel>
 				<h:inputText id="lastName"
-					value="#{barcelonaWorkshopBean.booking.firstName}" required="true"
+					value="#{marseilleWorkshopBean.booking.firstName}" required="true"
 					size="40">
 				</h:inputText>
 				<h:panelGroup></h:panelGroup>
@@ -91,23 +91,23 @@
 
 				<h:outputLabel value="First name:" for="firstName"></h:outputLabel>
 				<h:inputText id="firstName"
-					value="#{barcelonaWorkshopBean.booking.lastName}" size="40"
+					value="#{marseilleWorkshopBean.booking.lastName}" size="40"
 					required="true">
 				</h:inputText>
 				<h:panelGroup></h:panelGroup>
 				<h:message for="firstName" styleClass="errors"></h:message>
 
 				<h:outputLabel value="Email:" for="email"></h:outputLabel>
-				<h:inputText id="email" value="#{barcelonaWorkshopBean.booking.email}"
+				<h:inputText id="email" value="#{marseilleWorkshopBean.booking.email}"
 					required="true" size="30"
-					validator="#{barcelonaWorkshopBean.validateEmail}">
+					validator="#{marseilleWorkshopBean.validateEmail}">
 				</h:inputText>
 				<h:panelGroup></h:panelGroup>
 				<h:message for="email" styleClass="errors"></h:message>
                                 
                                 <h:outputLabel value="Sex:" for="sex"></h:outputLabel>
 					<h:selectOneRadio id="sex"
-						value="#{barcelonaWorkshopBean.booking.sex}" required="true">
+						value="#{marseilleWorkshopBean.booking.sex}" required="true">
 						<f:selectItem itemLabel="f" itemValue="f" />
 						<f:selectItem itemLabel="m" itemValue="m" />
 					</h:selectOneRadio>
@@ -117,7 +117,7 @@
 
 				<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
 				<h:inputText id="institution"
-					value="#{barcelonaWorkshopBean.booking.institution}" required="true"
+					value="#{marseilleWorkshopBean.booking.institution}" required="true"
 					size="30">
 				</h:inputText>
 				<h:panelGroup></h:panelGroup>
@@ -125,7 +125,7 @@
 
 				<h:outputLabel value="Country:" for="country"></h:outputLabel>
 				<h:inputText id="country"
-					value="#{barcelonaWorkshopBean.booking.country}" required="true"
+					value="#{marseilleWorkshopBean.booking.country}" required="true"
 					size="30">
 				</h:inputText>
 				<h:panelGroup></h:panelGroup>
@@ -142,7 +142,7 @@
 
 				<h:outputLabel value="Accommodation needed?" for="accommodationNeeded"></h:outputLabel>
 				<h:selectOneRadio id="accommodationNeeded"
-					value="#{barcelonaWorkshopBean.booking.accommodationYesNo}" required="true">
+					value="#{marseilleWorkshopBean.booking.accommodationYesNo}" required="true">
 					<f:selectItem itemLabel="no" itemValue="no" />
 					<f:selectItem itemLabel="yes" itemValue="yes" />
 				</h:selectOneRadio>
@@ -151,9 +151,9 @@
 
 				<h:outputLabel value="Number of nights:" for="numberofNights"></h:outputLabel>
 				<h:selectManyCheckbox id="numberofNights"
-					value="#{barcelonaWorkshopBean.booking.numberOfNights}">
-					<f:selectItem itemLabel="12.11.2014" itemValue="12.11.2014" />
-					<f:selectItem itemLabel="13.11.2014" itemValue="13.11.2014" />
+					value="#{marseilleWorkshopBean.booking.numberOfNights}">
+					<f:selectItem itemLabel="08.12.2014" itemValue="08.12.2014" />
+					<f:selectItem itemLabel="09.12.2014" itemValue="09.12.2014" />
 				</h:selectManyCheckbox>
 				<h:panelGroup></h:panelGroup>
 				<h:message for="numberofNights" styleClass="errors"></h:message>
@@ -168,7 +168,7 @@
 					<h:outputLabel value="Flight to be booked by your own institution:"></h:outputLabel>
 
 					<h:selectOneRadio id="flightBookedByMyOwn"
-						value="#{barcelonaWorkshopBean.booking.flightBookedByOwnInstitution}"
+						value="#{marseilleWorkshopBean.booking.flightBookedByOwnInstitution}"
 						required="true">
 
 						<f:selectItem itemLabel="yes"
@@ -188,7 +188,7 @@
 						value="Flight to be booked by INFRAFRONTIER Project Office:"></h:outputLabel>
 
 					<h:selectOneRadio id="flightBookedByInfrafrontier"
-						value="#{barcelonaWorkshopBean.booking.flightBookedByInfrafrontier}"
+						value="#{marseilleWorkshopBean.booking.flightBookedByInfrafrontier}"
 						required="true">
 
 						<f:selectItem itemLabel="yes"
@@ -225,7 +225,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					</h:outputLabel>
 
 					<h:inputText id="outFlightFrom"
-						value="#{barcelonaWorkshopBean.booking.outboundFlightFrom}" size="40">
+						value="#{marseilleWorkshopBean.booking.outboundFlightFrom}" size="40">
 					</h:inputText>
 
 					<h:outputText value="City, Country" style="font-style: italic">
@@ -239,7 +239,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					</h:outputLabel>
 
 					<h:inputText id="outFlightTo"
-						value="#{barcelonaWorkshopBean.booking.outboundFlightTo}" size="40"></h:inputText>
+						value="#{marseilleWorkshopBean.booking.outboundFlightTo}" size="40"></h:inputText>
 
 					<h:outputText value="City, Country" style="font-style: italic">
 					</h:outputText>
@@ -252,7 +252,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					<h:panelGroup>
 
 						<h:inputText id="outFlightDate"
-							value="#{barcelonaWorkshopBean.booking.outboundFlightDate}"
+							value="#{marseilleWorkshopBean.booking.outboundFlightDate}"
 							immediate="true"
 							onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
 
@@ -278,7 +278,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					<h:panelGrid columns="4" id="outFlightTime">
 
 						<h:selectOneMenu
-							value="#{barcelonaWorkshopBean.booking.outboundFlightHour}">
+							value="#{marseilleWorkshopBean.booking.outboundFlightHour}">
 
 							<f:selectItems value="#{outTimeSelectItems.hours}" />
 
@@ -287,7 +287,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 						<h:outputText value=" : " style="weight:bold;"></h:outputText>
 
 						<h:selectOneMenu
-							value="#{barcelonaWorkshopBean.booking.outboundFlightMinute}">
+							value="#{marseilleWorkshopBean.booking.outboundFlightMinute}">
 
 							<f:selectItems value="#{outTimeSelectItems.minutes}" />
 
@@ -320,7 +320,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					</h:outputLabel>
 
 					<h:inputText id="returnFlightFrom"
-						value="#{barcelonaWorkshopBean.booking.returnFlightFrom}" size="40"></h:inputText>
+						value="#{marseilleWorkshopBean.booking.returnFlightFrom}" size="40"></h:inputText>
 
 					<h:outputText value="City, Country" style="font-style: italic">
 					</h:outputText>
@@ -333,7 +333,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					</h:outputLabel>
 
 					<h:inputText id="returnFlightTo"
-						value="#{barcelonaWorkshopBean.booking.returnFlightTo}" size="40"></h:inputText>
+						value="#{marseilleWorkshopBean.booking.returnFlightTo}" size="40"></h:inputText>
 
 					<h:outputText value="City, Country" style="font-style: italic">
 					</h:outputText>
@@ -348,7 +348,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					<h:panelGroup>
 
 						<h:inputText id="returnFlightDate"
-							value="#{barcelonaWorkshopBean.booking.returnFlightDate}"
+							value="#{marseilleWorkshopBean.booking.returnFlightDate}"
 							immediate="true"
 							onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
 
@@ -376,7 +376,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 					<h:panelGrid columns="4" id="returnFlightTime">
 
 						<h:selectOneMenu
-							value="#{barcelonaWorkshopBean.booking.returnFlightHour}">
+							value="#{marseilleWorkshopBean.booking.returnFlightHour}">
 
 							<f:selectItems value="#{returnTimeSelectItems.hours}" />
 
@@ -385,7 +385,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 						<h:outputText value=" : " style="weight:bold;"></h:outputText>
 
 						<h:selectOneMenu
-							value="#{barcelonaWorkshopBean.booking.returnFlightMinute}">
+							value="#{marseilleWorkshopBean.booking.returnFlightMinute}">
 
 							<f:selectItems value="#{returnTimeSelectItems.minutes}" />
 
@@ -409,7 +409,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 
 				<h:outputLabel value="Remarks:" for="remarks" escape="true"></h:outputLabel>
 				<h:inputTextarea id="remarks"
-					value="#{barcelonaWorkshopBean.booking.remarks}">
+					value="#{marseilleWorkshopBean.booking.remarks}">
 				</h:inputTextarea>
 				<h:message for="remarks" styleClass="errors"></h:message>
 			</h:panelGrid>
@@ -420,7 +420,7 @@ For further information please contact the INFRAFRONTIER Project Office">
 
 			<div class="buttons">
 				<SPAN class="button"> <h:commandButton id="saveBooking"
-						styleClass="save" actionListener="#{barcelonaWorkshopBean.bookEvent}"
+						styleClass="save" actionListener="#{marseilleWorkshopBean.bookEvent}"
 						value="book event">
 					</h:commandButton> </SPAN>
 				</div>
