@@ -43,6 +43,6 @@ public interface BookingDao {
         
         public void insertBarcelonaWorkshopBooking(Integer eventId,BarcelonaWorkshopBooking  booking) throws DataAccessException;
         
-       // public void insertMarseileeWorkshopBooking(Integer eventId,MarseilleWorkshopBooking  booking) throws DataAccessException;
+        public void insertMarseilleWorkshopBooking(Integer eventId,MarseilleWorkshopBooking  booking) throws DataAccessException;
 	
 }
