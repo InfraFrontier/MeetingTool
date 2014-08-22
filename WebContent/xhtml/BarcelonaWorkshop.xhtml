@@ -104,6 +104,16 @@
 				</h:inputText>
 				<h:panelGroup></h:panelGroup>
 				<h:message for="email" styleClass="errors"></h:message>
+                                
+                                <h:outputLabel value="Sex:" for="sex"></h:outputLabel>
+					<h:selectOneRadio id="sex"
+						value="#{barcelonaWorkshopBean.booking.sex}" required="true">
+						<f:selectItem itemLabel="f" itemValue="f" />
+						<f:selectItem itemLabel="m" itemValue="m" />
+					</h:selectOneRadio>
+					<h:panelGroup></h:panelGroup>
+					<h:message for="sex" styleClass="errors"></h:message>
+                                        
 
 				<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
 				<h:inputText id="institution"
@@ -150,67 +160,248 @@
 			</h:panelGrid>
 
 <h:panelGrid columns="4" rowClasses="prop"
-						columnClasses="name,value,comment">
-						<f:facet name="header">
-							<h:outputText value="Travel"></h:outputText>
-						</f:facet>
-						<h:outputLabel value="Flight needed?" for="flightNeeded"></h:outputLabel>
-						<h:selectOneRadio id="flightNeeded"
-							value="#{barcelonaWorkshopBean.booking.flightNeeded}" required="true">
-							<f:selectItem itemLabel="yes" itemValue="yes" />
-							<f:selectItem itemLabel="no" itemValue="no" />
-						</h:selectOneRadio>
-						<h:outputText
-							value="choose no if you attend  the event, but don't need a flight" style="font-style: italic"></h:outputText>
-						<h:message for="flightNeeded" styleClass="errors"></h:message>
+					columnClasses="name,value,comment">
+					<f:facet name="header">
+						<h:outputText value="Travel"></h:outputText>
+					</f:facet>
+
+					<h:outputLabel value="Flight to be booked by your own institution:"></h:outputLabel>
+
+					<h:selectOneRadio id="flightBookedByMyOwn"
+						value="#{barcelonaWorkshopBean.booking.flightBookedByOwnInstitution}"
+						required="true">
+
+						<f:selectItem itemLabel="yes"
+							itemValue="yes (flight will be booked by our own institution)" />
+
+						<f:selectItem itemLabel="no"
+							itemValue="no (flight will be not booked by our own institution)" />
+
+					</h:selectOneRadio>
+					<h:panelGroup></h:panelGroup>
+
+					<h:message for="flightBookedByMyOwn" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel
+						value="Flight to be booked by INFRAFRONTIER Project Office:"></h:outputLabel>
+
+					<h:selectOneRadio id="flightBookedByInfrafrontier"
+						value="#{barcelonaWorkshopBean.booking.flightBookedByInfrafrontier}"
+						required="true">
+
+						<f:selectItem itemLabel="yes"
+							itemValue="yes (flight will be booked by INFRAFRONTIER Project Office)" />
+
+						<f:selectItem itemLabel="no"
+							itemValue="no (flight will be not booked by INFRAFRONTIER Project Office)" />
+
+					</h:selectOneRadio>
+
+					<h:panelGroup></h:panelGroup>
+
+					<h:message for="flightBookedByInfrafrontier" styleClass="errors"></h:message>
+
+				</h:panelGrid>
+
+			<!--	<h:outputText style="font-weight: bold;"
+					value="Please carefully check the offer sent by the INFRAFRONTIER Project Office before you confirm your flight arrangements. 
+INFRAFRONTIER will NOT cover the costs resulting from changes in the name of the ticket holder NOR changes resulting from conflicting appointments, after the ticket has been issued.
+For further information please contact the INFRAFRONTIER Project Office">
+				</h:outputText>-->
+
+				<h:panelGrid columns="4" rowClasses="prop"
+					columnClasses="name,value,comment">
+
+					<f:facet name="header">
+
+						<h:outputText value="Flight to meeting">
+						</h:outputText>
+
+					</f:facet>
+
+					<h:outputLabel value="From:" for="outFlightFrom">
+					</h:outputLabel>
+
+					<h:inputText id="outFlightFrom"
+						value="#{barcelonaWorkshopBean.booking.outboundFlightFrom}" size="40">
+					</h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="outFlightFrom" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="To:" for="outFlightTo">
+					</h:outputLabel>
+
+					<h:inputText id="outFlightTo"
+						value="#{barcelonaWorkshopBean.booking.outboundFlightTo}" size="40"></h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="outFlightTo" styleClass="errors"></h:message>
+
+
+					<h:outputLabel value="Date:" for="outFlightDate"></h:outputLabel>
+
+					<h:panelGroup>
+
+						<h:inputText id="outFlightDate"
+							value="#{barcelonaWorkshopBean.booking.outboundFlightDate}"
+							immediate="true"
+							onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
+
+							<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
+
+						</h:inputText>
+
+						<h:graphicImage url="/images/calendar.gif"
+							styleClass="calendar-icon"
+							onclick="return showCalendar('bookingForm:outFlightDate', 'd.m.y');" />
+
+					</h:panelGroup>
+
+					<h:outputText value="please use dd.mm.yyyy format"
+						style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="outFlightDate" styleClass="errors"></h:message>
+
+
+					<h:outputLabel value="Arrival time:"></h:outputLabel>
+
+					<h:panelGrid columns="4" id="outFlightTime">
+
+						<h:selectOneMenu
+							value="#{barcelonaWorkshopBean.booking.outboundFlightHour}">
+
+							<f:selectItems value="#{outTimeSelectItems.hours}" />
+
+						</h:selectOneMenu>
+
+						<h:outputText value=" : " style="weight:bold;"></h:outputText>
+
+						<h:selectOneMenu
+							value="#{barcelonaWorkshopBean.booking.outboundFlightMinute}">
+
+							<f:selectItems value="#{outTimeSelectItems.minutes}" />
+
+						</h:selectOneMenu>
+
+
 					</h:panelGrid>
-					
-					<h:panelGrid columns="4" rowClasses="prop"
-						columnClasses="name,value,comment" rendered="true">
-						<f:facet name="header">
-							<h:outputText value="Flight to meeting"></h:outputText>
-						</f:facet>
-						<h:outputLabel value="From:" for="outFlightFrom"></h:outputLabel>
-						<h:inputText id="outFlightFrom"
-							value="#{barcelonaWorkshopBean.booking.outboundFlightFrom}" size="40"></h:inputText>
-						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
-						<h:message for="outFlightFrom" styleClass="errors"></h:message>
 
-						<h:outputLabel value="To:" for="outFlightTo"></h:outputLabel>
-						<h:inputText id="outFlightTo"
-							value="#{barcelonaWorkshopBean.booking.outboundFlightTo}" size="40"></h:inputText>
-						<h:outputText value="City, Country" style="font-style: italic"></h:outputText>
-						<h:message for="outFlightTo" styleClass="errors"></h:message>
 
-						<h:outputLabel value="Date:" for="outFlightDate"></h:outputLabel>
-						<h:panelGroup>
-							<h:inputText id="outFlightDate"
-								value="#{barcelonaWorkshopBean.booking.outboundFlightDate}" immediate="true"
-								onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
-								<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
-							</h:inputText>
-							<h:graphicImage url="/images/calendar.gif"
-								styleClass="calendar-icon"
-								onclick="return showCalendar('bookingForm:outFlightDate', 'd.m.y');" />
-						</h:panelGroup>
-						<h:outputText value="please use dd.mm.yyyy format" style="font-style: italic"></h:outputText>
-						<h:message for="outFlightDate" styleClass="errors"></h:message>
+					<h:outputText value="e.g. 16:30 arrival time"
+						style="font-style: italic">
+					</h:outputText>
 
-						<h:outputLabel value="Arrival time:"></h:outputLabel>
-						<h:panelGrid columns="4" id="outFlightTime">
-							<h:selectOneMenu value="#{barcelonaWorkshopBean.booking.outboundFlightHour}" >
-								<f:selectItems value="#{outTimeSelectItems.hours}" />
-							</h:selectOneMenu>
-							<h:outputText value=" : " style="weight:bold;"></h:outputText>
-							<h:selectOneMenu value="#{barcelonaWorkshopBean.booking.outboundFlightMinute}">
-								<f:selectItems value="#{outTimeSelectItems.minutes}" />
-							</h:selectOneMenu>
+					<h:message for="outFlightTime" styleClass="errors">
+					</h:message>
 
-						</h:panelGrid>
+				</h:panelGrid>
 
-						<h:outputText value="e.g. 16:30 arrival time" style="font-style: italic"></h:outputText>
-						<h:message for="outFlightTime" styleClass="errors"></h:message>
+				<h:panelGrid columns="4" rowClasses="prop"
+					columnClasses="name,value,comment">
+
+					<f:facet name="header">
+
+						<h:outputText value="Flight from meeting">
+						</h:outputText>
+
+					</f:facet>
+
+					<h:outputLabel value="From:" for="returnFlightFrom">
+					</h:outputLabel>
+
+					<h:inputText id="returnFlightFrom"
+						value="#{barcelonaWorkshopBean.booking.returnFlightFrom}" size="40"></h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="returnFlightFrom" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="To" for="returnFlightTo">
+					</h:outputLabel>
+
+					<h:inputText id="returnFlightTo"
+						value="#{barcelonaWorkshopBean.booking.returnFlightTo}" size="40"></h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="returnFlightTo" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="Date:" for="returnFlightDate">
+					</h:outputLabel>
+
+					<h:panelGroup>
+
+						<h:inputText id="returnFlightDate"
+							value="#{barcelonaWorkshopBean.booking.returnFlightDate}"
+							immediate="true"
+							onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
+
+							<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
+
+						</h:inputText>
+
+						<h:graphicImage url="/images/calendar.gif"
+							styleClass="calendar-icon"
+							onclick="return showCalendar('bookingForm:returnFlightDate', 'd.m.y');" />
+
+					</h:panelGroup>
+
+					<h:outputText value="please use dd.mm.yyyy format"
+						style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="returnFlightDate" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="Departure time:" for="returnFlightTime">
+					</h:outputLabel>
+
+					<h:panelGrid columns="4" id="returnFlightTime">
+
+						<h:selectOneMenu
+							value="#{barcelonaWorkshopBean.booking.returnFlightHour}">
+
+							<f:selectItems value="#{returnTimeSelectItems.hours}" />
+
+						</h:selectOneMenu>
+
+						<h:outputText value=" : " style="weight:bold;"></h:outputText>
+
+						<h:selectOneMenu
+							value="#{barcelonaWorkshopBean.booking.returnFlightMinute}">
+
+							<f:selectItems value="#{returnTimeSelectItems.minutes}" />
+
+						</h:selectOneMenu>
+
+
 					</h:panelGrid>
+
+
+					<h:outputText value="e.g. 16:30 departure time"
+						style="font-style: italic"></h:outputText>
+
+					<h:message for="returnFlightTime" styleClass="errors">
+					</h:message>
+
+				</h:panelGrid>
 
 
 			<h:panelGrid columns="4" rowClasses="prop"

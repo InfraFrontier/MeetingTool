@@ -29,4 +29,6 @@ insert into events(event_name,event_start,event_end,event_place,event_is_active,
 values("INFRAFRONTIER Industry Liaison Workshop", 
 "13 November 2014, 08:00", "13 November 2014, 16:30", "Palau Robert, Barcelona, Spain", 1, "", "barcelonaWorkshop", "ana.decastro@helmholtz-muenchen.de");
 
-select * from events;
+insert into events(event_name,event_start,event_end,event_place,event_is_active,event_comment,event_form, event_contact) 
+values("INFRAFRONTIER-I3 General Meeting", 
+"9 December 2014, 09:00", "10 December 2014, 12:00", "Villa Massalia, Marseille, France", 1, "", "marseilleWorkshop", "ana.decastro@helmholtz-muenchen.de");
