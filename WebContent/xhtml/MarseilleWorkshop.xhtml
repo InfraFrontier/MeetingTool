@@ -173,33 +173,30 @@
 					<f:selectItem itemLabel="no" itemValue="no" />
 				</h:selectOneRadio>
 
+				<h:panelGroup></h:panelGroup>
 				
 				<h:message for="dinnerNeeded" styleClass="errors"></h:message>
 				
-					<h:outputLabel for="specialDietary" escape="true">Special dietary requirements:</h:outputLabel>
+				<h:outputLabel for="specialDietary" escape="true">Special dietary requirements:</h:outputLabel>
 
-					<h:selectOneRadio id="specialDietary"
-						value="#{marseilleWorkshopBean.booking.specialDietary}">
+				<h:selectOneRadio id="specialDietary" value="#{marseilleWorkshopBean.booking.specialDietary}">
+					<f:selectItem itemLabel="yes" itemValue="yes, special dietary" />
+					<f:selectItem itemLabel="no" itemValue="no special dietary" />
+				</h:selectOneRadio>
 
-						<f:selectItem itemLabel="yes" itemValue="yes, special dietary" />
+				<h:panelGroup></h:panelGroup>
 
-						<f:selectItem itemLabel="no" itemValue="no special dietary" />
+				<h:message for="specialDietary" styleClass="errors"></h:message>
 
-					</h:selectOneRadio>
+				<h:outputLabel for="dinnerRemarks" value="Remarks"></h:outputLabel>
 
-					<h:panelGroup></h:panelGroup>
+				<h:inputTextarea id="dinnerRemarks" value="#{marseilleWorkshopBean.booking.dinnerRemarks}">
+				</h:inputTextarea>
 
-					<h:message for="specialDietary" styleClass="errors"></h:message>
+				<h:panelGroup></h:panelGroup>
 
-					<h:outputLabel for="dinnerRemarks" value="Remarks"></h:outputLabel>
-
-					<h:inputTextarea id="dinnerRemarks"
-						value="#{marseilleWorkshopBean.booking.dinnerRemarks}">
-					</h:inputTextarea>
-
-					<h:panelGroup></h:panelGroup>
-
-					<h:message for="dinnerRemarks" styleClass="errors"></h:message>				
+				<h:message for="dinnerRemarks" styleClass="errors"></h:message>
+								
 			</h:panelGrid>
 			
 			<h:panelGrid columns="4" rowClasses="prop"
