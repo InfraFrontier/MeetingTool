@@ -192,8 +192,9 @@ public void insertMarseilleWorkshopBooking(Integer eventId, MarseilleWorkshopBoo
         +"booking_institution,"
         +"booking_country," +
         "booking_sex," +
-        "booking_hotel_needed," +
-        "booking_flight_needed," +
+        "booking_hotel_needed,"
+        +"booking_attend_dinner"
+        +"booking_flight_needed," +
         "booking_outbound_flight_from," +
         "booking_outbound_flight_to," +
         "booking_outbound_flight_date," +
@@ -207,7 +208,7 @@ public void insertMarseilleWorkshopBooking(Integer eventId, MarseilleWorkshopBoo
         +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	update(sql,new Object [] {eventId,booking.getFirstName(),booking.getLastName(),booking.getEmail(),booking.getRemarks(),booking.getInstitution(),booking.getCountry(),booking.getSex(),booking.getAccommodationYesNo(),
-			booking.getFlightNeeded(),booking.getOutboundFlightFrom(),booking.getOutboundFlightTo(),booking.getOutboundFlightDate(),booking.getOutboundFlightTime(),
+			booking.getDinnerYesNo(),booking.getFlightNeeded(),booking.getOutboundFlightFrom(),booking.getOutboundFlightTo(),booking.getOutboundFlightDate(),booking.getOutboundFlightTime(),
 			booking.getReturnFlightFrom(),booking.getReturnFlightTo(),booking.getReturnFlightDate(),booking.getReturnFlightTime()});
 }
 }
