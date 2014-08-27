@@ -159,7 +159,50 @@
 				<h:message for="numberofNights" styleClass="errors"></h:message>
 			</h:panelGrid>
 
-<h:panelGrid columns="4" rowClasses="prop"
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+
+				<f:facet name="header">
+					<h:outputText value="Dinner 9 December 2014"></h:outputText>
+				</f:facet>
+
+				<h:outputLabel value="Dinner"></h:outputLabel>
+				<h:selectOneRadio id="dinnerNeeded"
+					value="#{marseilleWorkshopBean.booking.dinnerYesNo}">
+					<f:selectItem itemLabel="yes" itemValue="yes" />
+					<f:selectItem itemLabel="no" itemValue="no" />
+				</h:selectOneRadio>
+
+				
+				<h:message for="dinnerNeeded" styleClass="errors"></h:message>
+				
+					<h:outputLabel for="specialDietary" escape="true">Special dietary requirements:</h:outputLabel>
+
+					<h:selectOneRadio id="specialDietary"
+						value="#{marseilleWorkshopBean.booking.specialDietary}">
+
+						<f:selectItem itemLabel="yes" itemValue="yes, special dietary" />
+
+						<f:selectItem itemLabel="no" itemValue="no special dietary" />
+
+					</h:selectOneRadio>
+
+					<h:panelGroup></h:panelGroup>
+
+					<h:message for="specialDietary" styleClass="errors"></h:message>
+
+					<h:outputLabel for="dinnerRemarks" value="Remarks"></h:outputLabel>
+
+					<h:inputTextarea id="dinnerRemarks"
+						value="#{marseilleWorkshopBean.booking.dinnerRemarks}">
+					</h:inputTextarea>
+
+					<h:panelGroup></h:panelGroup>
+
+					<h:message for="dinnerRemarks" styleClass="errors"></h:message>				
+			</h:panelGrid>
+			
+			<h:panelGrid columns="4" rowClasses="prop"
 					columnClasses="name,value,comment">
 					<f:facet name="header">
 						<h:outputText value="Travel"></h:outputText>
