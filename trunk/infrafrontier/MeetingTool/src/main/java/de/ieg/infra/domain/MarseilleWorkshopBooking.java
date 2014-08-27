@@ -2,7 +2,6 @@ package de.ieg.infra.domain;
 
 
 import java.util.Date;
-
 import java.util.List;
 
 
@@ -15,6 +14,8 @@ private String accommodationYesNo;
 private boolean needAccommodation;
 
 private String dinnerYesNo;
+
+private String specialDietary;
 
 private String dinnerRemarks;
 
@@ -96,6 +97,21 @@ public void setSex(String sex)
 		this.dinnerYesNo = dinnerYesNo;
 
 }
+		
+	/**
+	 * @return the specialDietary
+	 */
+	public String getSpecialDietary() {
+		return specialDietary;
+	}
+
+	/**
+	 * @param specialDietary the specialDietary to set
+	 */
+	public void setSpecialDietary(String specialDietary) {
+		this.specialDietary = specialDietary;
+	}
+
 	public boolean isNeedDinner() {
 		return needDinner;
 
