@@ -193,7 +193,7 @@ public void insertMarseilleWorkshopBooking(Integer eventId, MarseilleWorkshopBoo
         +"booking_country," +
         "booking_sex," +
         "booking_hotel_needed,"
-        +"booking_attend_dinner"
+        +"booking_attend_dinner,"
         +"booking_flight_needed," +
         "booking_outbound_flight_from," +
         "booking_outbound_flight_to," +
