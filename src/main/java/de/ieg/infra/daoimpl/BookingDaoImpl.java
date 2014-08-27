@@ -205,7 +205,7 @@ public void insertMarseilleWorkshopBooking(Integer eventId, MarseilleWorkshopBoo
         "booking_return_flight_time" +
         "" +
         ") "
-        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	update(sql,new Object [] {eventId,booking.getFirstName(),booking.getLastName(),booking.getEmail(),booking.getRemarks(),booking.getInstitution(),booking.getCountry(),booking.getSex(),booking.getAccommodationYesNo(),
 			booking.getDinnerYesNo(),booking.getFlightNeeded(),booking.getOutboundFlightFrom(),booking.getOutboundFlightTo(),booking.getOutboundFlightDate(),booking.getOutboundFlightTime(),
