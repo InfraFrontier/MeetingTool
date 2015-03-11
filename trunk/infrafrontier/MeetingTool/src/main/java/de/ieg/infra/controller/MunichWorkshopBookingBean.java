@@ -89,7 +89,7 @@ public class MunichWorkshopBookingBean extends BookingBean {
 
 
 		//Dinner
-		text.append("Dinner 7 MAy 2015, 20:00:\r\n");
+		text.append("Dinner 7 May 2015, 20:00:\r\n");
 		text.append("Dinner needed:     ");
 		text.append(booking.getDinnerYesNo());
 		text.append("\r\n");
