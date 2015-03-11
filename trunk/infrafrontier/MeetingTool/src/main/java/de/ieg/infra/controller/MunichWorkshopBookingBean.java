@@ -1,27 +1,27 @@
 package de.ieg.infra.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.faces.event.ActionEvent;
-
-import org.apache.log4j.Logger;
-
-import de.ieg.infra.domain.AthenInfrafrontierBooking;
 import de.ieg.infra.domain.Event;
 import de.ieg.infra.domain.MunichWorkshopBooking;
 import de.ieg.infra.utils.Utils;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.faces.event.ActionEvent;
+import org.apache.log4j.Logger;
+
+
 
 public class MunichWorkshopBookingBean extends BookingBean {
 
 	private MunichWorkshopBooking booking=new MunichWorkshopBooking();
 
 
+
 	/**
 	 * Returns a booking
 	 * @return
 	 */
-	public MunichWorkshopBooking getBooking() {
+	public MunichWorkshopBooking getBooking()
+	{
 		return booking;
 	}
 
@@ -29,7 +29,8 @@ public class MunichWorkshopBookingBean extends BookingBean {
 	 * Sets a booking
 	 * @param booking
 	 */
-	public void setBooking(MunichWorkshopBooking booking) {
+	public void setBooking(MunichWorkshopBooking booking)
+	{
 		this.booking = booking;
 	}
 
@@ -37,7 +38,8 @@ public class MunichWorkshopBookingBean extends BookingBean {
 	 * @see de.ieg.infra.controller.BookingBean#generateEmailConfirmationText()
 	 */
 	@Override
-	public String generateEmailConfirmationText(){
+	public String generateEmailConfirmationText()
+	{
 		StringBuffer text=new StringBuffer("New subscription by ");
 		text.append(booking.getFirstName() + " " + booking.getLastName() +"\r\n\r\n");
 		//event
@@ -56,14 +58,14 @@ public class MunichWorkshopBookingBean extends BookingBean {
 		text.append("\r\n");
 		text.append("\r\n");
 
-		//personal infos
+
+		//	personal infos
 		text.append("Personal information\r\n");
 		text.append("First name:        ");
 		text.append(booking.getFirstName());
 		text.append("\r\n");
 		text.append("Last name:       ");
 		text.append(booking.getLastName());
-		text.append("\r\n");
 		text.append("\r\n");
 		text.append("E-mail:           ");
 		text.append(booking.getEmail());
@@ -76,82 +78,32 @@ public class MunichWorkshopBookingBean extends BookingBean {
 		text.append("\r\n");
 		text.append("\r\n");
 
-		//Hotel
-		text.append("Hotel\r\n");
-		text.append("Hotel needed:     ");
-		text.append(booking.getHotelYesNo());
+		//Acccommodation		text.append("Accommodation\r\n");
+		text.append("Accommodation needed:     ");
+		text.append(booking.getAccommodationYesNo());
 		text.append("\r\n");
-		text.append("European Participants: ");
-		text.append(booking.getNumberOfNightsEuropeans()!=null?booking.getNumberOfNightsEuropeans().toString():null);
+		text.append("Number of Nights: ");
+		text.append(booking.getNumberOfNights()!=null?booking.getNumberOfNights().toString():null);
 		text.append("\r\n");
-		text.append("Non-European Participants: ");
-		text.append(booking.getNumberOfNightsNonEuropeans()!=null?booking.getNumberOfNightsNonEuropeans().toString():null);
 		text.append("\r\n");
 
-		text.append("\r\n");
-	
 
 		//Dinner
-		text.append("Dinner 8 May 2014, 20:00:\r\n");
+		text.append("Dinner 7 MAy 2015, 20:00:\r\n");
 		text.append("Dinner needed:     ");
-		text.append(booking.getDinnerNeeded());
-		text.append("\r\n");
-		text.append("Special dietary requirements: ");
-		text.append(booking.getSpecialDietary());
+		text.append(booking.getDinnerYesNo());
 		text.append("\r\n");
 		text.append("Dinner remarks:    ");
 		text.append(booking.getDinnerRemarks());
 		text.append("\r\n");
 		text.append("\r\n");
-		
-		//Travel
-		text.append("Travel\r\n");
-		text.append("Flight to be booked by your own institution: ");
-		text.append(booking.getFlightBookedByOwnInstitution());
-		text.append("\r\n");
-		text.append("Flight to be booked by INFRAFRONTIER Project Office: ");
-		text.append(booking.getFlightBookedByInfrafrontier());
-		text.append("\r\n");
-		text.append("\r\n");
-		
-		text.append("Flight to meeting  "  );
-		text.append("\r\n");
-		text.append("From:              ");
-		text.append(booking.getOutboundFlightFrom());
-		text.append("\r\n");
-		text.append("To:                ");
-		text.append(booking.getOutboundFlightTo());
-		text.append("\r\n");
-		text.append("Date:               ");
-		text.append(parseDate(booking.getOutboundFlightDate()));
-		text.append("\r\n");
-		text.append("Arrival time:       ");
-		text.append(booking.getOutboundFlightTime());
-		
-		text.append("\r\n");
-		text.append("\r\n");
-		text.append("Flight from meeting  "  );
-		text.append("\r\n");
-		text.append("From:              ");
-		text.append(booking.getReturnFlightFrom());
-		text.append("\r\n");
-		text.append("To:                ");
-		text.append(booking.getReturnFlightTo());
-		text.append("\r\n");
-		text.append("Date:               ");
-		text.append(parseDate(booking.getReturnFlightDate()));
-		text.append("\r\n");
-		text.append("Departure time:       ");
-		text.append(booking.getReturnFlightTime());
-		text.append("\r\n");
-		text.append("\r\n");
 
-		//Remarks
-		text.append("Remarks:          ");
+
+		//General Remarks
+		text.append("General Remarks:          ");
 		text.append(booking.getRemarks());
 		text.append("\r\n");
 		text.append("\r\n");
-
 		return text.toString();
 	}
 
@@ -169,47 +121,20 @@ public class MunichWorkshopBookingBean extends BookingBean {
 		text.append("\t");
 		text.append(booking.getEmail());
 		text.append("\t");
-		text.append(booking.getCountry());
-		text.append("\t");
 		text.append(booking.getInstitution());
 		text.append("\t");
-		text.append(booking.getHotelYesNo());
+		text.append(booking.getCountry());
 		text.append("\t");
-		text.append(booking.getNumberOfNightsEuropeans()!=null?"European Participants:" +booking.getNumberOfNightsEuropeans().toString():null);
+		text.append(booking.getAccommodationYesNo());
 		text.append("\t");
-		text.append(booking.getNumberOfNightsEuropeans()!=null?"Non-European Participants"+booking.getNumberOfNightsEuropeans().toString():null);
+		text.append(booking.getNumberOfNights()!=null?"Number of Nights:" +booking.getNumberOfNights().toString():null);
 		text.append("\t");
-		//text.append(booking.getHotelPreference());
-		//text.append("\t");
-		text.append(booking.getDinnerNeeded());
-		text.append("\t");
-		text.append(booking.getSpecialDietary());
+		text.append(booking.getDinnerYesNo());
 		text.append("\t");
 		text.append(booking.getDinnerRemarks());
 		text.append("\t");
-		text.append(booking.getFlightBookedByOwnInstitution());
-		text.append("\t");
-		text.append(booking.getFlightBookedByInfrafrontier());
-		text.append("\t");
-		text.append(booking.getOutboundFlightFrom());
-		text.append("\t");
-		text.append(booking.getOutboundFlightTo());
-		text.append("\t");
-		text.append(parseDate(booking.getOutboundFlightDate()));
-		text.append("\t");
-		text.append(booking.getOutboundFlightTime());
-		text.append("\t");
-		text.append(booking.getReturnFlightFrom());
-		text.append("\t");
-		text.append(booking.getReturnFlightTo());
-		text.append("\t");
-		text.append(parseDate(booking.getReturnFlightDate()));
-		text.append("\t");
-		text.append(booking.getReturnFlightTime());
-		text.append("\t");
 		text.append(booking.getRemarks());
 		text.append("\t");
-		
 		return text.toString();
 	}
 
@@ -223,8 +148,6 @@ public class MunichWorkshopBookingBean extends BookingBean {
 		try {
 			Event event=this.getEvent();
 			event.setBooking(booking);
-			
-			bookingDao.insertMunichWorkshopBooking(event.getId(),booking);
 			String confirmationText=this.generateEmailConfirmationText();
 			String bookingText=this.generateBookingText();
 			super.sendEmailConfirmation(event,confirmationText,bookingText);
@@ -233,11 +156,11 @@ public class MunichWorkshopBookingBean extends BookingBean {
 		}
 		catch(Exception ex) {
 			Logger.getLogger(BookingBean.class).error("bookEvent() creates an error: " +ex.getMessage());
-			Utils.addErrorMessage("bookingForm:bookGrid","Error! Booking failed. Please contact the infrafrontier management");
+			Utils.addErrorMessage("bookingForm:bookGrid","Error! Booking failed. Please contact the INFRAFRONTIER: michael.hagn@helmholtz-muenchen.de");
 		}
 
 	}
-	
+
 	public String parseDate(Date date){
 		String sDate="";
 		if(date!=null){

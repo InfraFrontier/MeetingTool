@@ -115,7 +115,7 @@ public class BookingDaoImpl extends JdbcTemplate implements BookingDao{
         ") "
         +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-	update(sql,new Object [] {eventId,booking.getFirstName(),booking.getLastName(),booking.getEmail(),booking.getRemarks(),booking.getInstitution(),booking.getCountry(),booking.getSex(),booking.getHotelYesNo(),
+	update(sql,new Object [] {eventId,booking.getFirstName(),booking.getLastName(),booking.getEmail(),booking.getRemarks(),booking.getInstitution(),booking.getCountry(),booking.getSex(),booking.getAccommodationYesNo(),
 			booking.getFlightNeeded(),booking.getOutboundFlightFrom(),booking.getOutboundFlightTo(),booking.getOutboundFlightDate(),booking.getOutboundFlightTime(),
 			booking.getReturnFlightFrom(),booking.getReturnFlightTo(),booking.getReturnFlightDate(),booking.getReturnFlightTime()});
 	}
