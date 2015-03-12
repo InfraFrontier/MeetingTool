@@ -51,29 +51,27 @@
 
         <f:view>
             <h:form id="bookingForm" styleClass="dialog">
+
                 <h:panelGrid columns="1" id="bookGrid">
 
                     <h:panelGrid columns="2" rowClasses="prop"
                                  columnClasses="name,value">
-
                         <h:outputLabel value="Event:" for="eventName"
                                        style="font-weight:bold;"></h:outputLabel>
                         <h:outputText id="eventName"
                                       value="#{munichWorkshopBean.event.name}"></h:outputText>
-                        <h:outputLabel value="Place:" for="place" style="font-weight:bold;"></h:outputLabel>
-                        <h:outputText id="place" value="#{munichWorkshopBean.event.place}"></h:outputText>
+                        <h:outputLabel value="Location:" for="Location"
+                                       style="font-weight:bold;"></h:outputLabel>
+                        <h:outputText id="Location"
+                                      value="#{munichWorkshopBean.event.place}"></h:outputText>
                         <h:outputLabel value="From:" for="start" style="font-weight:bold;"></h:outputLabel>
                         <h:outputText id="start" value="#{munichWorkshopBean.event.start}"></h:outputText>
                         <h:outputLabel value="To:" for="end" style="font-weight:bold;"></h:outputLabel>
                         <h:outputText id="end" value="#{munichWorkshopBean.event.end}"></h:outputText>
-
                     </h:panelGrid>
-
 
                     <h:message for="bookingForm" styleClass="message"></h:message>
                     <h:message for="bookGrid" styleClass="errorsGlobal"></h:message>
-
-                    <h:outputText value=""></h:outputText>
 
                     <h:panelGrid columns="4" rowClasses="prop"
                                  columnClasses="name,value,comment">
@@ -102,15 +100,6 @@
                         <h:panelGroup></h:panelGroup>
                         <h:message for="email" styleClass="errors"></h:message>
 
-                        <h:outputLabel value="Sex:" for="sex"></h:outputLabel>
-                        <h:selectOneRadio id="sex"
-                                          value="#{munichWorkshopBean.booking.sex}" required="true">
-                            <f:selectItem itemLabel="f" itemValue="f" />
-                            <f:selectItem itemLabel="m" itemValue="m" />
-                        </h:selectOneRadio>
-                        <h:panelGroup></h:panelGroup>
-                        <h:message for="sex" styleClass="errors"></h:message>
-
                         <h:outputLabel value="Institution:" for="institution"></h:outputLabel>
                         <h:inputText id="institution"
                                      value="#{munichWorkshopBean.booking.institution}" required="true"
@@ -127,364 +116,91 @@
 
                     </h:panelGrid>
 
-                    
-                    			<h:panelGrid columns="4" rowClasses="prop"
-				columnClasses="name,value,comment">
 
-				<f:facet name="header">
-					<h:outputText value="Accommodation"></h:outputText>
-				</f:facet>
 
-				<h:outputLabel value="Accommodation needed?" for="accommodationNeeded"></h:outputLabel>
-				<h:selectOneRadio id="accommodationNeeded"
-					value="#{munichWorkshopBean.booking.accommodationYesNo}" required="true">
-					<f:selectItem itemLabel="no" itemValue="no" />
-					<f:selectItem itemLabel="yes" itemValue="yes" />
-				</h:selectOneRadio>
-				<h:panelGroup></h:panelGroup>
-				<h:message for="accommodationNeeded" styleClass="errors"></h:message>
-
-				<h:outputLabel value="Number of nights:" for="numberofNights"></h:outputLabel>
-				<h:selectManyCheckbox id="numberofNights"
-					value="#{munichWorkshopBean.booking.numberOfNights}">
-					<f:selectItem itemLabel="07.05.2015" itemValue="07.05.2015" />
-				</h:selectManyCheckbox>
-				<h:panelGroup></h:panelGroup>
-				<h:message for="numberofNights" styleClass="errors"></h:message>
-			</h:panelGrid>
-                    
-                    
-                    
-                    
-                    
-                    
                     <h:panelGrid columns="4" rowClasses="prop"
                                  columnClasses="name,value,comment">
 
                         <f:facet name="header">
+                            <h:outputText value="Accommodation  "></h:outputText>
+                                                        <h:outputLink target="_blank" value="http://www.marriott.de/hotels/travel/mucfr-munich-airport-marriott-hotel/" >
+                            <f:verbatim>Munich Airport Marriott Hotel</f:verbatim>
+                        </h:outputLink>
+                        </f:facet>
 
-                            <h:outputText value="Dinner 7 May 2015, 20:00">
-                            </h:outputText>
+                        <h:outputLabel value="Accommodation needed?"
+                                       for="accommodationNeeded"></h:outputLabel>
+                        <h:selectOneRadio id="accommodationNeeded"
+                                          value="#{munichWorkshopBean.booking.accommodationYesNo}"
+                                          required="true">
+                            <f:selectItem itemLabel="no" itemValue="no" />
+                            <f:selectItem itemLabel="yes" itemValue="yes" />
+                        </h:selectOneRadio>
+                        <h:panelGroup></h:panelGroup>
 
+                        <h:message for="accommodationNeeded" styleClass="errors"></h:message>
+
+                        <h:outputLabel value="Number of Nights:" for="numberofNights"></h:outputLabel>
+
+                        <h:selectManyCheckbox id="numberofNights"
+                                              value="#{munichWorkshopBean.booking.numberOfNights}">
+                            <f:selectItem itemLabel="07.05.2015" itemValue="07.05.2015" />
+                        </h:selectManyCheckbox>
+                        <h:panelGroup></h:panelGroup>
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="4" rowClasses="prop"
+                                 columnClasses="name,value,comment">
+
+                        <f:facet name="header">
+                            <h:outputText value="Dinner 07 May 2015, 20:00"></h:outputText>
                         </f:facet>
 
                         <h:outputLabel value="Dinner"></h:outputLabel>
-
                         <h:selectOneRadio id="dinnerNeeded"
                                           value="#{munichWorkshopBean.booking.dinnerYesNo}">
-
-                            <f:selectItem itemLabel="yes" itemValue="yes, dinner is needed" />
-
-                            <f:selectItem itemLabel="no" itemValue="dinner is not needed" />
-
+                            <f:selectItem itemLabel="yes" itemValue="yes" />
+                            <f:selectItem itemLabel="no" itemValue="no" />
                         </h:selectOneRadio>
-
-                        <h:panelGroup>                        				<h:outputLink value="http://www.weihenstephaner.de/" >
-					<f:verbatim>Das Braustuberl Weihenstephan</f:verbatim>
-				</h:outputLink></h:panelGroup>
+                        <h:outputLink target="_blank" value="http://www.weihenstephaner.de/" >
+                            <f:verbatim>Dinner 07 May 2015, 20:00</f:verbatim>
+                        </h:outputLink>
 
                         <h:message for="dinnerNeeded" styleClass="errors"></h:message>
+                    </h:panelGrid>
 
-                        <h:outputLabel for="specialDietary" escape="true">
-                            Special dietary requirements:
 
+                    <h:panelGrid columns="4" rowClasses="prop"
+                                 columnClasses="name,value,comment">
+
+                        <h:outputLabel value="General Remarks:" for="generalremarks"
+                                       escape="true">
                         </h:outputLabel>
 
-                        <h:selectOneRadio id="specialDietary"
-                                          value="#{munichWorkshopBean.booking.specialDietary}">
-
-                            <f:selectItem itemLabel="yes" itemValue="yes, special dietary" />
-
-                            <f:selectItem itemLabel="no" itemValue="no special dietary" />
-
-                        </h:selectOneRadio>
-                        
-
-
-                        <h:panelGroup></h:panelGroup>
-
-                        <h:message for="specialDietary" styleClass="errors"></h:message>
-
-                        <h:outputLabel for="dinnerRemarks" value="Remarks"></h:outputLabel>
-
-                        <h:inputTextarea id="dinnerRemarks"
-                                         value="#{munichWorkshopBean.booking.dinnerRemarks}">
+                        <h:inputTextarea id="generalremarks"
+                                         value="#{munichWorkshopBean.booking.remarks}">
                         </h:inputTextarea>
 
-                        <h:panelGroup></h:panelGroup>
-
-                        <h:message for="dinnerRemarks" styleClass="errors"></h:message>
-
-                    </h:panelGrid>
-
-                    <h:panelGrid columns="4" rowClasses="prop"
-                                 columnClasses="name,value,comment">
-                        <f:facet name="header">
-                            <h:outputText value="Travel"></h:outputText>
-                        </f:facet>
-
-                        <h:outputLabel value="Flight to be booked by your own institution:"></h:outputLabel>
-
-                        <h:selectOneRadio id="flightBookedByMyOwn"
-                                          value="#{munichWorkshopBean.booking.flightBookedByOwnInstitution}"
-                                          required="true">
-
-                            <f:selectItem itemLabel="yes"
-                                          itemValue="yes (flight will be booked by our own institution)" />
-
-                            <f:selectItem itemLabel="no"
-                                          itemValue="no (flight will be not booked by our own institution)" />
-
-                        </h:selectOneRadio>
-                        <h:panelGroup></h:panelGroup>
-
-                        <h:message for="flightBookedByMyOwn" styleClass="errors">
+                        <h:message for="generalremarks" styleClass="errors">
                         </h:message>
-
-
-                        <h:outputLabel
-                            value="Flight to be booked by INFRAFRONTIER Project Office:"></h:outputLabel>
-
-                        <h:selectOneRadio id="flightBookedByInfrafrontier"
-                                          value="#{munichWorkshopBean.booking.flightBookedByInfrafrontier}"
-                                          required="true">
-
-                            <f:selectItem itemLabel="yes"
-                                          itemValue="yes (flight will be booked by INFRAFRONTIER Project Office)" />
-
-                            <f:selectItem itemLabel="no"
-                                          itemValue="no (flight will be not booked by INFRAFRONTIER Project Office)" />
-
-                        </h:selectOneRadio>
-
-                        <h:panelGroup></h:panelGroup>
-
-                        <h:message for="flightBookedByInfrafrontier" styleClass="errors"></h:message>
-
                     </h:panelGrid>
 
-                    <h:outputText style="font-weight: bold;"
-                                  value="Please carefully check the offer sent by the INFRAFRONTIER Project Office before you confirm your flight arrangements. 
-                                  INFRAFRONTIER will NOT cover the costs resulting from changes in the name of the ticket holder NOR changes resulting from conflicting appointments, after the ticket has been issued.
-                                  For further information please contact the INFRAFRONTIER Project Office">
+
+                    <h:outputText
+                        value="(email address: michael.hagn@helmholtz-muenchen.de)">
                     </h:outputText>
 
-                    <h:panelGrid columns="4" rowClasses="prop"
-                                 columnClasses="name,value,comment">
-
-                        <f:facet name="header">
-
-                            <h:outputText value="Flight to meeting">
-                            </h:outputText>
-
-                        </f:facet>
-
-                        <h:outputLabel value="From:" for="outFlightFrom">
-                        </h:outputLabel>
-
-                        <h:inputText id="outFlightFrom"
-                                     value="#{munichWorkshopBean.booking.outboundFlightFrom}" size="40">
-                        </h:inputText>
-
-                        <h:outputText value="City, Country" style="font-style: italic">
-                        </h:outputText>
-
-                        <h:message for="outFlightFrom" styleClass="errors">
-                        </h:message>
-
-
-                        <h:outputLabel value="To:" for="outFlightTo">
-                        </h:outputLabel>
-
-                        <h:inputText id="outFlightTo"
-                                     value="#{munichWorkshopBean.booking.outboundFlightTo}" size="40"></h:inputText>
-
-                        <h:outputText value="City, Country" style="font-style: italic">
-                        </h:outputText>
-
-                        <h:message for="outFlightTo" styleClass="errors"></h:message>
-
-
-                        <h:outputLabel value="Date:" for="outFlightDate"></h:outputLabel>
-
-                        <h:panelGroup>
-
-                            <h:inputText id="outFlightDate"
-                                         value="#{munichWorkshopBean.booking.outboundFlightDate}"
-                                         immediate="true"
-                                         onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
-
-                                <f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
-
-                            </h:inputText>
-
-                            <h:graphicImage url="/images/calendar.gif"
-                                            styleClass="calendar-icon"
-                                            onclick="return showCalendar('bookingForm:outFlightDate', 'd.m.y');" />
-
-                        </h:panelGroup>
-
-                        <h:outputText value="please use dd.mm.yyyy format"
-                                      style="font-style: italic">
-                        </h:outputText>
-
-                        <h:message for="outFlightDate" styleClass="errors"></h:message>
-
-
-                        <h:outputLabel value="Arrival time:"></h:outputLabel>
-
-                        <h:panelGrid columns="4" id="outFlightTime">
-
-                            <h:selectOneMenu
-                                value="#{munichWorkshopBean.booking.outboundFlightHour}">
-
-                                <f:selectItems value="#{outTimeSelectItems.hours}" />
-
-                            </h:selectOneMenu>
-
-                            <h:outputText value=" : " style="weight:bold;"></h:outputText>
-
-                            <h:selectOneMenu
-                                value="#{munichWorkshopBean.booking.outboundFlightMinute}">
-
-                                <f:selectItems value="#{outTimeSelectItems.minutes}" />
-
-                            </h:selectOneMenu>
-
-
-                        </h:panelGrid>
-
-
-                        <h:outputText value="e.g. 16:30 arrival time"
-                                      style="font-style: italic">
-                        </h:outputText>
-
-                        <h:message for="outFlightTime" styleClass="errors">
-                        </h:message>
-
-                    </h:panelGrid>
-
-                    <h:panelGrid columns="4" rowClasses="prop"
-                                 columnClasses="name,value,comment">
-
-                        <f:facet name="header">
-
-                            <h:outputText value="Flight from meeting">
-                            </h:outputText>
-
-                        </f:facet>
-
-                        <h:outputLabel value="From:" for="returnFlightFrom">
-                        </h:outputLabel>
-
-                        <h:inputText id="returnFlightFrom"
-                                     value="#{munichWorkshopBean.booking.returnFlightFrom}" size="40"></h:inputText>
-
-                        <h:outputText value="City, Country" style="font-style: italic">
-                        </h:outputText>
-
-                        <h:message for="returnFlightFrom" styleClass="errors">
-                        </h:message>
-
-
-                        <h:outputLabel value="To" for="returnFlightTo">
-                        </h:outputLabel>
-
-                        <h:inputText id="returnFlightTo"
-                                     value="#{munichWorkshopBean.booking.returnFlightTo}" size="40"></h:inputText>
-
-                        <h:outputText value="City, Country" style="font-style: italic">
-                        </h:outputText>
-
-                        <h:message for="returnFlightTo" styleClass="errors">
-                        </h:message>
-
-
-                        <h:outputLabel value="Date:" for="returnFlightDate">
-                        </h:outputLabel>
-
-                        <h:panelGroup>
-
-                            <h:inputText id="returnFlightDate"
-                                         value="#{munichWorkshopBean.booking.returnFlightDate}"
-                                         immediate="true"
-                                         onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
-
-                                <f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
-
-                            </h:inputText>
-
-                            <h:graphicImage url="/images/calendar.gif"
-                                            styleClass="calendar-icon"
-                                            onclick="return showCalendar('bookingForm:returnFlightDate', 'd.m.y');" />
-
-                        </h:panelGroup>
-
-                        <h:outputText value="please use dd.mm.yyyy format"
-                                      style="font-style: italic">
-                        </h:outputText>
-
-                        <h:message for="returnFlightDate" styleClass="errors">
-                        </h:message>
-
-
-                        <h:outputLabel value="Departure time:" for="returnFlightTime">
-                        </h:outputLabel>
-
-                        <h:panelGrid columns="4" id="returnFlightTime">
-
-                            <h:selectOneMenu
-                                value="#{munichWorkshopBean.booking.returnFlightHour}">
-
-                                <f:selectItems value="#{returnTimeSelectItems.hours}" />
-
-                            </h:selectOneMenu>
-
-                            <h:outputText value=" : " style="weight:bold;"></h:outputText>
-
-                            <h:selectOneMenu
-                                value="#{munichWorkshopBean.booking.returnFlightMinute}">
-
-                                <f:selectItems value="#{returnTimeSelectItems.minutes}" />
-
-                            </h:selectOneMenu>
-
-
-                        </h:panelGrid>
-
-
-                        <h:outputText value="e.g. 16:30 departure time"
-                                      style="font-style: italic"></h:outputText>
-
-                        <h:message for="returnFlightTime" styleClass="errors">
-                        </h:message>
-
-                    </h:panelGrid>
-
-
-
-                    <h:panelGrid columns="4" rowClasses="prop"
-                                 columnClasses="name,value,comment">
-
-                        <h:outputLabel value="Remarks:" for="remarks" escape="true">
-
-                        </h:outputLabel>
-                        <h:inputTextarea id="remarks"
-                                         value="#{munichWorkshopBean.booking.remarks}"></h:inputTextarea>
-                        <h:message for="remarks" styleClass="errors"></h:message>
-                    </h:panelGrid>
-                    <h:outputText
-                        value="(email address: ana.decastro@helmholtz-muenchen.de)"></h:outputText>
-
-
                     <div class="buttons">
-                        <SPAN class="button"><h:commandButton id="saveBooking"
-                                                              styleClass="save"
-                                                              actionListener="#{munichWorkshopBean.bookEvent}"
-                                                              value="book event">
-                            </h:commandButton> </SPAN>
+                        <SPAN class="button"> <h:commandButton id="saveBooking"
+                                                               styleClass="save" actionListener="#{munichWorkshopBean.bookEvent}"
+                                                               value="book event">
+                            </h:commandButton>
+                        </SPAN>
                     </div>
-                    <h:message for="saveBooking" styleClass="errors"></h:message>
+
+                    <h:message for="saveBooking" styleClass="errors">
+                    </h:message>
+
                 </h:panelGrid>
             </h:form>
         </f:view>
