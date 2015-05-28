@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="path" value="#{request.contextPath}" />
+<ui:param name="basePath"
+	value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{path}/" />
+<ui:param name="baseUrl" value="#{initParam['baseUrl']}" />
+<ui:param name="googleAnalytics" value="#{initParam['googleAnalytics']}" />
+<ui:param name="googleAnalyticsBaseUrl"
+	value="#{initParam['googleAnalyticsBaseUrl']}" />
+
+<h:head>
+	<title><ui:insert name="title">INFRAFRONTIER Marseille Workshop</ui:insert></title>
+	<h:outputStylesheet library="css" name="default.css" />
+	<h:outputStylesheet library="css" name="calendar-win2k-1.css" />
+	<!-- import the calendar script -->
+	<script type="text/javascript" src="#{path}/js/calendar.js"></script>
+	<script type="text/javascript" src="#{path}/js/calendar-en.js"></script>
+	<script type="text/javascript" src="#{path}/js/calendarHelper.js"></script>
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', '#{googleAnalytics}', 'infrafrontier.eu');
+		ga('send', 'pageview');
+	</script>
+	<meta name="http-equiv" value="Content-Type"
+		content="text/html; charset=ISO-8859-2" />
+</h:head>
+
+<h:body>
+
+	<div class="logo">
+		<a href="#{baseUrl}"><img
+			src="#{path}/images/logo-infrafrontier.png" alt="Infrafrontier" /></a>
+	</div>
+
+	<f:view>
+		<h:form id="bookingForm" styleClass="dialog">
+			<h:panelGrid columns="1" id="bookGrid">
+
+				<h:panelGrid columns="2" rowClasses="prop"
+					columnClasses="name,value">
+					
+				<h:outputLabel value="Event:" for="eventName"
+					style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="eventName"
+					value="#{IpadMdKoWorkshopBean.event.name}"></h:outputText>
+				<h:outputLabel value="Location:" for="Location"
+					style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="Location"
+					value="#{IpadMdKoWorkshopBean.event.place}"></h:outputText>
+				<h:outputLabel value="From:" for="start" style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="start" value="#{IpadMdKoWorkshopBean.event.start}"></h:outputText>
+				<h:outputLabel value="To:" for="end" style="font-weight:bold;"></h:outputLabel>
+				<h:outputText id="end" value="#{IpadMdKoWorkshopBean.event.end}"></h:outputText>
+			</h:panelGrid>
+
+			<h:message for="bookingForm" styleClass="message"></h:message>
+			<h:message for="bookGrid" styleClass="errorsGlobal"></h:message>
+
+
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+				<f:facet name="header">
+					<h:outputText value="Personal information:"></h:outputText>
+				</f:facet>
+
+				<h:outputLabel value="Last name:" for="lastName">
+				</h:outputLabel>
+				<h:inputText id="lastName"
+					value="#{IpadMdKoWorkshopBean.booking.firstName}" required="true"
+					size="40">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="lastName" styleClass="errors" />
+
+				<h:outputLabel value="First name:" for="firstName"></h:outputLabel>
+				<h:inputText id="firstName"
+					value="#{IpadMdKoWorkshopBean.booking.lastName}" size="40"
+					required="true">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="firstName" styleClass="errors"></h:message>
+
+				<h:outputLabel value="Email:" for="email"></h:outputLabel>
+				<h:inputText id="email" value="#{IpadMdKoWorkshopBean.booking.email}"
+					required="true" size="30"
+					validator="#{IpadMdKoWorkshopBean.validateEmail}">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="email" styleClass="errors"></h:message>
+                                
+                                <h:outputLabel value="Sex:" for="sex"></h:outputLabel>
+					<h:selectOneRadio id="sex"
+						value="#{IpadMdKoWorkshopBean.booking.sex}" required="true">
+						<f:selectItem itemLabel="f" itemValue="f" />
+						<f:selectItem itemLabel="m" itemValue="m" />
+					</h:selectOneRadio>
+					<h:panelGroup></h:panelGroup>
+					<h:message for="sex" styleClass="errors"></h:message>
+                                        
+
+				<h:outputLabel value="Institution:" for="institution"></h:outputLabel>
+				<h:inputText id="institution"
+					value="#{IpadMdKoWorkshopBean.booking.institution}" required="true"
+					size="30">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="institution" styleClass="errors"></h:message>
+
+				<h:outputLabel value="Country:" for="country"></h:outputLabel>
+				<h:inputText id="country"
+					value="#{IpadMdKoWorkshopBean.booking.country}" required="true"
+					size="30">
+				</h:inputText>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="country" styleClass="errors"></h:message>
+			</h:panelGrid>
+
+
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+
+				<f:facet name="header">
+					<h:outputText value="Accommodation"></h:outputText>
+				</f:facet>
+
+				<h:outputLabel value="Accommodation needed?" for="accommodationNeeded"></h:outputLabel>
+				<h:selectOneRadio id="accommodationNeeded"
+					value="#{IpadMdKoWorkshopBean.booking.accommodationYesNo}" required="true">
+					<f:selectItem itemLabel="no" itemValue="no" />
+					<f:selectItem itemLabel="yes" itemValue="yes" />
+				</h:selectOneRadio>
+				<h:panelGroup></h:panelGroup>
+				<h:message for="accommodationNeeded" styleClass="errors"></h:message>
+
+				<h:outputLabel value="Number of nights European participants:" for="numberofnightseuropeanParticipants"></h:outputLabel>
+	<h:selectManyCheckbox id="numberofnightseuropeanParticipants" value="#{IpadMdKoWorkshopBean.booking.numberOfNightsEuropeanParticipants}">
+			<f:selectItem itemLabel="21.07.2015" itemValue="21.07.2015"/>
+	</h:selectManyCheckbox>
+	<h:panelGroup></h:panelGroup>
+	<h:message for="numberofnightseuropeanParticipants" styleClass="errors"></h:message>
+
+	<h:outputLabel value="Number of nights non-European participants:" for="numberofnightsnoneuropeanParticipants"></h:outputLabel>
+	<h:selectManyCheckbox id="numberofnightsnoneuropeanParticipants" value="#{IpadMdKoWorkshopBean.booking.numberOfNightsNonEuropeanParticipants}">
+		<f:selectItem itemLabel="20.07.2015" itemValue="20.07.2015"/>
+		<f:selectItem itemLabel="21.07.2015" itemValue="21.07.2015"/>
+	</h:selectManyCheckbox>
+	<h:panelGroup></h:panelGroup>
+	<h:message for="numberofnightsnoneuropeanParticipants" styleClass="errors"></h:message>
+
+</h:panelGrid>
+
+
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+
+				<f:facet name="header">
+					<h:outputText value="Dinner 9 December 2014"></h:outputText>
+				</f:facet>
+
+				<h:outputLabel value="Dinner"></h:outputLabel>
+				<h:selectOneRadio id="dinnerNeeded"
+					value="#{IpadMdKoWorkshopBean.booking.dinnerYesNo}">
+					<f:selectItem itemLabel="yes" itemValue="yes" />
+					<f:selectItem itemLabel="no" itemValue="no" />
+				</h:selectOneRadio>
+
+				<h:panelGroup></h:panelGroup>
+				
+				<h:message for="dinnerNeeded" styleClass="errors"></h:message>
+				
+				
+							</h:panelGrid>
+			
+			<h:panelGrid columns="4" rowClasses="prop"
+					columnClasses="name,value,comment">
+					<f:facet name="header">
+						<h:outputText value="Travel"></h:outputText>
+					</f:facet>
+
+					<h:outputLabel value="Flight to be booked by your own institution:"></h:outputLabel>
+
+					<h:selectOneRadio id="flightBookedByMyOwn"
+						value="#{IpadMdKoWorkshopBean.booking.flightBookedByOwnInstitution}"
+						required="true">
+
+						<f:selectItem itemLabel="yes"
+							itemValue="yes (flight will be booked by our own institution)" />
+
+						<f:selectItem itemLabel="no"
+							itemValue="no (flight will be not booked by our own institution)" />
+
+					</h:selectOneRadio>
+					<h:panelGroup></h:panelGroup>
+
+					<h:message for="flightBookedByMyOwn" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel
+						value="Flight to be booked by INFRAFRONTIER Project Office:"></h:outputLabel>
+
+					<h:selectOneRadio id="flightBookedByInfrafrontier"
+						value="#{IpadMdKoWorkshopBean.booking.flightBookedByInfrafrontier}"
+						required="true">
+
+						<f:selectItem itemLabel="yes"
+							itemValue="yes (flight will be booked by INFRAFRONTIER Project Office)" />
+
+						<f:selectItem itemLabel="no"
+							itemValue="no (flight will be not booked by INFRAFRONTIER Project Office)" />
+
+					</h:selectOneRadio>
+
+					<h:panelGroup></h:panelGroup>
+
+					<h:message for="flightBookedByInfrafrontier" styleClass="errors"></h:message>
+
+				</h:panelGrid>
+
+			<!--	<h:outputText style="font-weight: bold;"
+					value="Please carefully check the offer sent by the INFRAFRONTIER Project Office before you confirm your flight arrangements. 
+INFRAFRONTIER will NOT cover the costs resulting from changes in the name of the ticket holder NOR changes resulting from conflicting appointments, after the ticket has been issued.
+For further information please contact the INFRAFRONTIER Project Office">
+				</h:outputText>-->
+
+				<h:panelGrid columns="4" rowClasses="prop"
+					columnClasses="name,value,comment">
+
+					<f:facet name="header">
+
+						<h:outputText value="Flight to meeting">
+						</h:outputText>
+
+					</f:facet>
+
+					<h:outputLabel value="From:" for="outFlightFrom">
+					</h:outputLabel>
+
+					<h:inputText id="outFlightFrom"
+						value="#{IpadMdKoWorkshopBean.booking.outboundFlightFrom}" size="40">
+					</h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="outFlightFrom" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="To:" for="outFlightTo">
+					</h:outputLabel>
+
+					<h:inputText id="outFlightTo"
+						value="#{IpadMdKoWorkshopBean.booking.outboundFlightTo}" size="40"></h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="outFlightTo" styleClass="errors"></h:message>
+
+
+					<h:outputLabel value="Date:" for="outFlightDate"></h:outputLabel>
+
+					<h:panelGroup>
+
+						<h:inputText id="outFlightDate"
+							value="#{IpadMdKoWorkshopBean.booking.outboundFlightDate}"
+							immediate="true"
+							onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
+
+							<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
+
+						</h:inputText>
+
+						<h:graphicImage url="/images/calendar.gif"
+							styleClass="calendar-icon"
+							onclick="return showCalendar('bookingForm:outFlightDate', 'd.m.y');" />
+
+					</h:panelGroup>
+
+					<h:outputText value="please use dd.mm.yyyy format"
+						style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="outFlightDate" styleClass="errors"></h:message>
+
+
+					<h:outputLabel value="Arrival time:"></h:outputLabel>
+
+					<h:panelGrid columns="4" id="outFlightTime">
+
+						<h:selectOneMenu
+							value="#{IpadMdKoWorkshopBean.booking.outboundFlightHour}">
+
+							<f:selectItems value="#{outTimeSelectItems.hours}" />
+
+						</h:selectOneMenu>
+
+						<h:outputText value=" : " style="weight:bold;"></h:outputText>
+
+						<h:selectOneMenu
+							value="#{IpadMdKoWorkshopBean.booking.outboundFlightMinute}">
+
+							<f:selectItems value="#{outTimeSelectItems.minutes}" />
+
+						</h:selectOneMenu>
+
+
+					</h:panelGrid>
+
+
+					<h:outputText value="e.g. 16:30 arrival time"
+						style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="outFlightTime" styleClass="errors">
+					</h:message>
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="4" rowClasses="prop"
+					columnClasses="name,value,comment">
+
+					<f:facet name="header">
+
+						<h:outputText value="Flight from meeting">
+						</h:outputText>
+
+					</f:facet>
+
+					<h:outputLabel value="From:" for="returnFlightFrom">
+					</h:outputLabel>
+
+					<h:inputText id="returnFlightFrom"
+						value="#{IpadMdKoWorkshopBean.booking.returnFlightFrom}" size="40"></h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="returnFlightFrom" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="To" for="returnFlightTo">
+					</h:outputLabel>
+
+					<h:inputText id="returnFlightTo"
+						value="#{IpadMdKoWorkshopBean.booking.returnFlightTo}" size="40"></h:inputText>
+
+					<h:outputText value="City, Country" style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="returnFlightTo" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="Date:" for="returnFlightDate">
+					</h:outputLabel>
+
+					<h:panelGroup>
+
+						<h:inputText id="returnFlightDate"
+							value="#{IpadMdKoWorkshopBean.booking.returnFlightDate}"
+							immediate="true"
+							onclick="return showCalendarForThis(this, 'd.m.y');" size="40">
+
+							<f:convertDateTime locale="de" pattern="dd.MM.yyyy" />
+
+						</h:inputText>
+
+						<h:graphicImage url="/images/calendar.gif"
+							styleClass="calendar-icon"
+							onclick="return showCalendar('bookingForm:returnFlightDate', 'd.m.y');" />
+
+					</h:panelGroup>
+
+					<h:outputText value="please use dd.mm.yyyy format"
+						style="font-style: italic">
+					</h:outputText>
+
+					<h:message for="returnFlightDate" styleClass="errors">
+					</h:message>
+
+
+					<h:outputLabel value="Departure time:" for="returnFlightTime">
+					</h:outputLabel>
+
+					<h:panelGrid columns="4" id="returnFlightTime">
+
+						<h:selectOneMenu
+							value="#{IpadMdKoWorkshopBean.booking.returnFlightHour}">
+
+							<f:selectItems value="#{returnTimeSelectItems.hours}" />
+
+						</h:selectOneMenu>
+
+						<h:outputText value=" : " style="weight:bold;"></h:outputText>
+
+						<h:selectOneMenu
+							value="#{IpadMdKoWorkshopBean.booking.returnFlightMinute}">
+
+							<f:selectItems value="#{returnTimeSelectItems.minutes}" />
+
+						</h:selectOneMenu>
+
+
+					</h:panelGrid>
+
+
+					<h:outputText value="e.g. 16:30 departure time"
+						style="font-style: italic"></h:outputText>
+
+					<h:message for="returnFlightTime" styleClass="errors">
+					</h:message>
+
+				</h:panelGrid>
+
+
+			<h:panelGrid columns="4" rowClasses="prop"
+				columnClasses="name,value,comment">
+
+				<h:outputLabel value="Remarks:" for="remarks" escape="true"></h:outputLabel>
+				<h:inputTextarea id="remarks"
+					value="#{IpadMdKoWorkshopBean.booking.remarks}">
+				</h:inputTextarea>
+				<h:message for="remarks" styleClass="errors"></h:message>
+			</h:panelGrid>
+
+			<h:outputText
+				value="(email address: ana.decastro@helmholtz-muenchen.de)">
+			</h:outputText>
+
+			<div class="buttons">
+				<SPAN class="button"> <h:commandButton id="saveBooking"
+						styleClass="save" actionListener="#{IpadMdKoWorkshopBean.bookEvent}"
+						value="book event">
+					</h:commandButton> </SPAN>
+				</div>
+				<h:message for="saveBooking" styleClass="errors"></h:message>
+			</h:panelGrid>
+		</h:form>
+	</f:view>
+</h:body>
+</html>
