@@ -123,6 +123,14 @@
         <redirect />
     </navigation-case>
 </navigation-rule>
+
+<navigation-rule>
+    <navigation-case>
+        <from-outcome>IpadMdKoWorkshop</from-outcome>
+        <to-view-id>/xhtml/IPAD_MD_KOworkshop.xhtml</to-view-id>
+        <redirect />
+    </navigation-case>
+</navigation-rule>
 	
 </faces-config>
 
