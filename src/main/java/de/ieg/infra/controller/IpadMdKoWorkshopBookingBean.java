@@ -204,10 +204,13 @@ public class IpadMdKoWorkshopBookingBean extends BookingBean {
 	 * Handles save events
 	 * @param ev {@link ActionEvent}
 	 */
+        
+
 	public void bookEvent(ActionEvent ev){
 		try {
 			Event event=this.getEvent();
 			event.setBooking(booking);
+                        bookingDao.insertIpadMdKoWorkshopBooking(event.getId(), booking);
 			String confirmationText=this.generateEmailConfirmationText();
 			String bookingText=this.generateBookingText();
 			super.sendEmailConfirmation(event,confirmationText,bookingText);
