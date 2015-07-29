@@ -23,7 +23,7 @@
 		<googleAnalyticsBaseUrl></googleAnalyticsBaseUrl>
 		<fromContact>info@infrafrontier.eu</fromContact>
 		<disasterContact>info@infrafrontier.eu</disasterContact>
-		<smtpServer>ADDLOCALSMTPSERVERHERE</smtpServer>
+		<smtpServer>localhost</smtpServer>
 	 <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
 	</properties>
 
