@@ -13,6 +13,7 @@ import de.ieg.infra.domain.PragueWorkshopBooking;
 import de.ieg.infra.domain.BarcelonaWorkshopBooking;
 import de.ieg.infra.domain.IpadMdKoWorkshopBooking;
 import de.ieg.infra.domain.MarseilleWorkshopBooking;
+import de.ieg.infra.domain.impcAnnualMeetingBooking;
 
 /**
  * @author steinkamp A dao for booking entities
@@ -46,4 +47,6 @@ public interface BookingDao {
     public void insertMarseilleWorkshopBooking(Integer eventId, MarseilleWorkshopBooking booking) throws DataAccessException;
 
     public void insertIpadMdKoWorkshopBooking(Integer eventId, IpadMdKoWorkshopBooking booking) throws DataAccessException;
+
+    public void insertImpcAnnualMeetingBooking(Integer id, impcAnnualMeetingBooking booking) throws DataAccessException;
 }

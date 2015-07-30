@@ -134,6 +134,11 @@
 <property name="bookingDao" ref="bookingDao"></property>
 </bean>
 
+ <bean id="impcAnnualMeetingBean" class="de.ieg.infra.controller.impcAnnualMeetingBookingBean" scope="session">
+<property name="mailService" ref="mailService"></property>
+<property name="bookingDao" ref="bookingDao"></property>
+</bean>
+
 	
 	<!-- ******************************** select items ****************************  -->
 

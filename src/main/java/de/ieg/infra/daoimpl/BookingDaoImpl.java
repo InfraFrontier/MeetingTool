@@ -14,6 +14,7 @@ import de.ieg.infra.domain.PragueWorkshopBooking;
 import de.ieg.infra.domain.BarcelonaWorkshopBooking;
 import de.ieg.infra.domain.IpadMdKoWorkshopBooking;
 import de.ieg.infra.domain.MarseilleWorkshopBooking;
+import de.ieg.infra.domain.impcAnnualMeetingBooking;
 
 public class BookingDaoImpl extends JdbcTemplate implements BookingDao{
 
@@ -246,4 +247,35 @@ public void insertMarseilleWorkshopBooking(Integer eventId, MarseilleWorkshopBoo
 			booking.getDinnerYesNo(),booking.getFlightNeeded(),booking.getOutboundFlightFrom(),booking.getOutboundFlightTo(),booking.getOutboundFlightDate(),booking.getOutboundFlightTime(),
 			booking.getReturnFlightFrom(),booking.getReturnFlightTo(),booking.getReturnFlightDate(),booking.getReturnFlightTime()});
 }
+    
+    
+    @Override
+    public void insertImpcAnnualMeetingBooking(Integer eventId, impcAnnualMeetingBooking booking)
+            throws DataAccessException {
+        String hotelDetails = booking.getNumberOfNights().toString() + "," + booking.getnumberOfNightsAdditional();
+        String socialProgramme = "T:" + booking.gettourYesNo() + "," + "M:" + booking.getmealYesNo();
+
+        hotelDetails = hotelDetails.replaceAll("[\\[\\](){}]", "");
+        socialProgramme = socialProgramme.replaceAll("[\\[\\](){}]", "");
+
+
+        System.out.println("the method to insert booking has been called");
+        String sql = "INSERT INTO bookings ("
+                + "booking_event,"
+                + "booking_first_name,"
+                + "booking_second_name,"
+                + "booking_email,"
+                + "booking_remarks,"
+                + "booking_institution,"
+                + "booking_country,"
+                + "booking_sex,"
+                + "booking_hotel_needed,"
+                + "booking_hotel_details," + "booking_attend_dinner" + "" + ") "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+
+        update(sql, new Object[]{eventId, booking.getFirstName(), booking.getLastName(), booking.getEmail(), booking.getRemarks(),
+                    booking.getInstitution(), booking.getCountry(), booking.getSex(), booking.getAccommodationYesNo(),
+                    hotelDetails, socialProgramme});
+    }
 }
